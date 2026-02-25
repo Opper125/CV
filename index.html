@@ -4,398 +4,483 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MyanmarCV Builder</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Myanmar:wght@300;400;500;600;700;800;900&family=Padauk:wght@400;700&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-:root{--g1:#166534;--g2:#22c55e;--g3:#4ade80;--g4:#86efac;--g5:#dcfce7;--g6:#f0fdf4;--n2:#1e3a5f}
+:root{--g1:#166534;--g2:#22c55e;--g3:#4ade80;--g5:#dcfce7;--g6:#f0fdf4;--n2:#1e3a5f}
 body{font-family:'Noto Sans Myanmar','Padauk','Poppins',sans-serif;background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);min-height:100vh;color:#333}
-::-webkit-scrollbar{width:6px}
-::-webkit-scrollbar-track{background:rgba(0,0,0,0.2)}
-::-webkit-scrollbar-thumb{background:var(--g2);border-radius:4px}
+::-webkit-scrollbar{width:6px}::-webkit-scrollbar-thumb{background:var(--g2);border-radius:4px}
 
-.ld-ov{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.9);z-index:99999;justify-content:center;align-items:center;flex-direction:column}
-.ld-sp{width:50px;height:50px;border:4px solid rgba(255,255,255,0.15);border-top:4px solid var(--g3);border-radius:50%;animation:sp .7s linear infinite;margin-bottom:14px}
+.ldov{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.92);z-index:99999;justify-content:center;align-items:center;flex-direction:column}
+.ldsp{width:52px;height:52px;border:4px solid rgba(255,255,255,0.12);border-top:4px solid var(--g3);border-radius:50%;animation:sp .7s linear infinite;margin-bottom:16px}
 @keyframes sp{to{transform:rotate(360deg)}}
-.ld-ov p{color:#fff;font-size:14px}
+.ldov p{color:#fff;font-size:14px;font-weight:500}
+.ldov small{color:rgba(255,255,255,0.5);font-size:11px;margin-top:6px}
 
-.hdr{background:linear-gradient(135deg,rgba(22,101,52,0.25),rgba(34,197,94,0.08));backdrop-filter:blur(20px);padding:16px 14px;text-align:center;border-bottom:1px solid rgba(74,222,128,0.25);position:sticky;top:0;z-index:100}
-.hdr-in{max-width:580px;margin:0 auto;display:flex;align-items:center;justify-content:center;gap:11px}
-.hdr-logo{width:42px;height:42px;border-radius:10px;background:linear-gradient(135deg,var(--g2),var(--g1));display:flex;align-items:center;justify-content:center;overflow:hidden;flex-shrink:0;box-shadow:0 3px 12px rgba(34,197,94,0.35)}
-.hdr-logo img{width:100%;height:100%;object-fit:cover;border-radius:10px}
-.hdr-logo i{color:#fff;font-size:18px}
-.hdr h1{color:#fff;font-family:'Poppins',sans-serif;font-size:19px;font-weight:700}
+.hdr{background:linear-gradient(135deg,rgba(22,101,52,0.22),rgba(34,197,94,0.06));backdrop-filter:blur(20px);padding:15px 14px;text-align:center;border-bottom:1px solid rgba(74,222,128,0.2);position:sticky;top:0;z-index:100}
+.hdr-in{max-width:560px;margin:0 auto;display:flex;align-items:center;justify-content:center;gap:10px}
+.hdr-lg{width:40px;height:40px;border-radius:10px;background:linear-gradient(135deg,var(--g2),var(--g1));display:flex;align-items:center;justify-content:center;overflow:hidden;flex-shrink:0;box-shadow:0 3px 10px rgba(34,197,94,0.3)}
+.hdr-lg img{width:100%;height:100%;object-fit:cover;border-radius:10px}
+.hdr-lg i{color:#fff;font-size:17px}
+.hdr h1{color:#fff;font-family:'Poppins';font-size:18px;font-weight:700}
 .hdr h1 em{color:var(--g3);font-style:normal}
-.hdr small{color:rgba(255,255,255,0.45);font-size:10.5px;display:block;margin-top:1px}
+.hdr small{color:rgba(255,255,255,0.4);font-size:10px;display:block;margin-top:1px}
 
-.fcon{max-width:560px;margin:20px auto;padding:0 12px 35px}
-.fsec{background:rgba(255,255,255,0.97);border-radius:14px;padding:18px 20px;margin-bottom:11px;box-shadow:0 4px 20px rgba(0,0,0,0.15);position:relative;overflow:hidden;animation:fu .35s ease-out}
-.fsec::before{content:'';position:absolute;top:0;left:0;width:3.5px;height:100%;background:linear-gradient(180deg,var(--g2),var(--g1))}
-@keyframes fu{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
-.stl{font-size:13.5px;font-weight:700;color:var(--n2);margin-bottom:14px;padding-bottom:8px;border-bottom:1.5px solid var(--g5);display:flex;align-items:center;gap:9px}
-.sic{width:30px;height:30px;border-radius:8px;background:linear-gradient(135deg,var(--g3),var(--g2));display:flex;align-items:center;justify-content:center;color:#fff;font-size:13px;flex-shrink:0;box-shadow:0 2px 6px rgba(34,197,94,0.25)}
-.fg{margin-bottom:13px}.fg:last-child{margin-bottom:0}
-.fg label{display:block;font-weight:600;margin-bottom:5px;color:#374151;font-size:12px}
-.fg .rq{color:#ef4444;margin-left:2px;font-size:11px}
-.fg input,.fg textarea{width:100%;padding:10px 12px;border:1.5px solid #e5e7eb;border-radius:9px;font-size:13px;font-family:inherit;transition:all .25s;background:#f9fafb}
-.fg input:focus,.fg textarea:focus{border-color:var(--g2);outline:none;box-shadow:0 0 0 3px rgba(74,222,128,0.12);background:#fff}
-.fg textarea{resize:vertical;min-height:85px;line-height:1.7}
-.fg input::placeholder,.fg textarea::placeholder{color:#adb5bd;font-size:11.5px}
+.fcon{max-width:540px;margin:18px auto;padding:0 11px 32px}
+.fs{background:rgba(255,255,255,0.97);border-radius:13px;padding:16px 18px;margin-bottom:10px;box-shadow:0 3px 16px rgba(0,0,0,0.13);position:relative;overflow:hidden;animation:fu .3s ease-out}
+.fs::before{content:'';position:absolute;top:0;left:0;width:3px;height:100%;background:linear-gradient(180deg,var(--g2),var(--g1))}
+@keyframes fu{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.st{font-size:13px;font-weight:700;color:var(--n2);margin-bottom:12px;padding-bottom:7px;border-bottom:1.5px solid var(--g5);display:flex;align-items:center;gap:8px}
+.si{width:28px;height:28px;border-radius:7px;background:linear-gradient(135deg,var(--g3),var(--g2));display:flex;align-items:center;justify-content:center;color:#fff;font-size:12px;flex-shrink:0}
+.fg{margin-bottom:12px}.fg:last-child{margin-bottom:0}
+.fg label{display:block;font-weight:600;margin-bottom:4px;color:#374151;font-size:11.5px}
+.fg .rq{color:#ef4444;font-size:10px}
+.fg input,.fg textarea{width:100%;padding:9px 11px;border:1.5px solid #e5e7eb;border-radius:8px;font-size:13px;font-family:inherit;transition:all .2s;background:#f9fafb}
+.fg input:focus,.fg textarea:focus{border-color:var(--g2);outline:none;box-shadow:0 0 0 3px rgba(74,222,128,0.1);background:#fff}
+.fg textarea{resize:vertical;min-height:78px;line-height:1.7}
+.fg input::placeholder,.fg textarea::placeholder{color:#adb5bd;font-size:11px}
 
-.sgbx{border:1.5px dashed #ced4da;border-radius:10px;padding:5px;background:#fefefe}
-.sgbx:hover{border-color:var(--g3)}
-.sgbx canvas{display:block;width:100%;height:145px;border-radius:7px;cursor:crosshair;touch-action:none;background:#fff}
-.sgac{margin-top:8px;display:flex;gap:8px}
-.bsg{padding:8px 15px;border:none;border-radius:8px;cursor:pointer;font-family:inherit;font-size:11px;font-weight:600;background:linear-gradient(135deg,#ef4444,#dc2626);color:#fff;display:flex;align-items:center;gap:5px;transition:all .2s;box-shadow:0 2px 6px rgba(239,68,68,0.25)}
-.bsg:hover{transform:translateY(-1px)}
-.sght{font-size:10px;color:#9ca3af;margin-top:5px;display:flex;align-items:center;gap:4px}
+.sgb{border:1.5px dashed #ced4da;border-radius:9px;padding:4px;background:#fefefe}
+.sgb canvas{display:block;width:100%;height:135px;border-radius:6px;cursor:crosshair;touch-action:none;background:#fff}
+.sga{margin-top:7px;display:flex;gap:7px}
+.bsg{padding:7px 14px;border:none;border-radius:7px;cursor:pointer;font-family:inherit;font-size:10.5px;font-weight:600;background:linear-gradient(135deg,#ef4444,#dc2626);color:#fff;display:flex;align-items:center;gap:4px}
+.sgi{font-size:9.5px;color:#9ca3af;margin-top:5px;display:flex;align-items:center;gap:3px}
 
-.pha{border:1.5px dashed #ced4da;border-radius:10px;padding:24px 14px;text-align:center;cursor:pointer;transition:all .3s;background:#f9fafb}
-.pha:hover{border-color:var(--g3);background:var(--g6)}
-.pha .phi{font-size:32px;color:#9ca3af;margin-bottom:6px}
-.pha .pht{font-size:12.5px;font-weight:600;color:#4b5563}
-.pha .phh{font-size:10px;color:#adb5bd;margin-top:3px}
-.phpr{margin-top:10px;display:none;text-align:center}
-.phpr img{width:95px;height:118px;border-radius:10px;object-fit:cover;border:2px solid var(--g2)}
-.phpr .phc{font-size:10px;color:var(--g2);margin-top:5px;cursor:pointer;font-weight:600;display:flex;align-items:center;justify-content:center;gap:4px}
+.pa{border:1.5px dashed #ced4da;border-radius:9px;padding:22px 12px;text-align:center;cursor:pointer;transition:all .3s;background:#f9fafb}
+.pa:hover{border-color:var(--g3);background:var(--g6)}
+.pa .pi{font-size:30px;color:#9ca3af;margin-bottom:5px}
+.pa .pt{font-size:12px;font-weight:600;color:#4b5563}
+.pa .ph{font-size:9.5px;color:#adb5bd;margin-top:2px}
+.pp{margin-top:8px;display:none;text-align:center}
+.pp img{width:90px;height:115px;border-radius:9px;object-fit:cover;border:2px solid var(--g2)}
+.pp .pc{font-size:9.5px;color:var(--g2);margin-top:4px;cursor:pointer;font-weight:600;display:flex;align-items:center;justify-content:center;gap:3px}
 #phIn{display:none}
 
-.bgen{width:100%;padding:14px;background:linear-gradient(135deg,var(--g2),var(--g1));color:#fff;border:none;border-radius:11px;font-size:15px;font-weight:700;cursor:pointer;font-family:inherit;box-shadow:0 4px 18px rgba(34,197,94,0.4);display:flex;align-items:center;justify-content:center;gap:8px;margin-top:4px;transition:all .3s}
-.bgen:hover{transform:translateY(-2px);box-shadow:0 6px 24px rgba(34,197,94,0.5)}
-.fft{text-align:center;color:rgba(255,255,255,0.28);margin-top:8px;font-size:9.5px}
+.bg{width:100%;padding:13px;background:linear-gradient(135deg,var(--g2),var(--g1));color:#fff;border:none;border-radius:10px;font-size:15px;font-weight:700;cursor:pointer;font-family:inherit;box-shadow:0 4px 16px rgba(34,197,94,0.35);display:flex;align-items:center;justify-content:center;gap:7px;margin-top:3px;transition:all .3s}
+.bg:hover{transform:translateY(-2px);box-shadow:0 6px 22px rgba(34,197,94,0.45)}
+.ff{text-align:center;color:rgba(255,255,255,0.25);margin-top:7px;font-size:9px}
 
-/* CV OUTPUT */
-.cvout{display:none;max-width:570px;margin:16px auto;padding:0 8px 40px}
-.cvacts{display:flex;gap:7px;margin-bottom:14px;justify-content:center;flex-wrap:wrap}
-.ba{padding:10px 18px;border:none;border-radius:9px;font-size:12px;font-weight:600;cursor:pointer;font-family:inherit;color:#fff;display:flex;align-items:center;gap:5px;transition:all .25s}
+/* OUTPUT */
+.co{display:none;max-width:660px;margin:14px auto;padding:0 8px 36px}
+.ca{display:flex;gap:6px;margin-bottom:12px;justify-content:center;flex-wrap:wrap}
+.ba{padding:9px 16px;border:none;border-radius:8px;font-size:11.5px;font-weight:600;cursor:pointer;font-family:inherit;color:#fff;display:flex;align-items:center;gap:4px;transition:all .2s}
 .ba:hover{transform:translateY(-1px)}
-.bdl{background:linear-gradient(135deg,#3b82f6,#1d4ed8);box-shadow:0 2px 8px rgba(59,130,246,0.35)}
-.bpr{background:linear-gradient(135deg,#8b5cf6,#6d28d9);box-shadow:0 2px 8px rgba(139,92,246,0.35)}
-.bbk{background:linear-gradient(135deg,#64748b,#475569);box-shadow:0 2px 8px rgba(100,116,139,0.35)}
-.cvwrap{overflow-x:auto;-webkit-overflow-scrolling:touch;display:flex;justify-content:center}
+.bdl{background:linear-gradient(135deg,#3b82f6,#1d4ed8)}
+.bpr{background:linear-gradient(135deg,#8b5cf6,#6d28d9)}
+.bbk{background:linear-gradient(135deg,#64748b,#475569)}
+.cw{overflow-x:auto;-webkit-overflow-scrolling:touch;display:flex;justify-content:center}
 
-/* ====== CV TEMPLATE 528x1280 ====== */
+/* ====== CV TEMPLATE - A4 RATIO ====== */
+/* Base: 620x877 | x4 = 2480x3508 (A4 300DPI) */
 #cvTpl{
-  width:528px;height:1280px;background:#ffffff;
+  width:620px;height:877px;
+  background:#ffffff;
   position:relative;overflow:hidden;
-  box-shadow:0 8px 40px rgba(0,0,0,0.35);
+  box-shadow:0 6px 35px rgba(0,0,0,0.3);
   font-family:'Noto Sans Myanmar','Padauk','Poppins',sans-serif;
 }
+/* Decoration images - generated by Canvas API */
+.cv-deco{position:absolute;pointer-events:none}
+#wvTop{top:0;left:0;width:620px;height:65px;z-index:1}
+#wvBot{bottom:0;left:0;width:620px;height:55px;z-index:1}
+#mapBg{bottom:55px;right:8px;width:130px;height:250px;opacity:0.045;z-index:0}
 
-/* DECORATIONS - ALL DONE WITH CSS & INLINE */
-.cv-top-bar{position:absolute;top:0;left:0;width:100%;height:62px;z-index:1;overflow:hidden}
-.cv-top-wave1{position:absolute;top:0;left:0;width:100%;height:100%;background:linear-gradient(135deg,rgba(22,101,52,0.75),rgba(34,197,94,0.45),rgba(134,239,172,0.25));clip-path:polygon(0 0,100% 0,100% 55%,85% 85%,65% 60%,45% 80%,25% 55%,10% 75%,0 50%)}
-.cv-top-wave2{position:absolute;top:0;left:0;width:100%;height:100%;background:linear-gradient(135deg,rgba(20,83,45,0.35),rgba(74,222,128,0.15));clip-path:polygon(0 0,100% 0,100% 35%,80% 60%,55% 40%,35% 55%,15% 35%,0 45%)}
+/* Side accent */
+.cv-sa{position:absolute;top:65px;left:0;width:3px;height:757px;background:linear-gradient(180deg,var(--g2),var(--g1),var(--g3));z-index:2;opacity:0.45}
 
-.cv-bot-bar{position:absolute;bottom:0;left:0;width:100%;height:48px;z-index:1;overflow:hidden}
-.cv-bot-wave1{position:absolute;bottom:0;left:0;width:100%;height:100%;background:linear-gradient(135deg,rgba(22,101,52,0.7),rgba(34,197,94,0.45),rgba(134,239,172,0.2));clip-path:polygon(0 50%,10% 25%,25% 50%,40% 30%,60% 55%,80% 35%,100% 45%,100% 100%,0 100%)}
-.cv-bot-wave2{position:absolute;bottom:0;left:0;width:100%;height:100%;background:linear-gradient(135deg,rgba(20,83,45,0.3),rgba(74,222,128,0.15));clip-path:polygon(0 65%,15% 45%,35% 65%,55% 40%,75% 60%,90% 45%,100% 58%,100% 100%,0 100%)}
-
-.cv-side{position:absolute;top:62px;left:0;width:4px;height:calc(100% - 110px);background:linear-gradient(180deg,var(--g2),var(--g1),var(--g3));z-index:2;opacity:0.5}
-
-.cv-map{position:absolute;bottom:60px;right:10px;width:100px;height:190px;opacity:0.035;z-index:0;background:var(--g1);clip-path:polygon(50% 0%,58% 5%,62% 12%,65% 20%,63% 28%,66% 35%,62% 42%,58% 48%,61% 55%,57% 62%,54% 68%,52% 75%,50% 82%,48% 88%,46% 93%,44% 97%,42% 100%,40% 97%,38% 93%,36% 88%,34% 82%,33% 75%,32% 68%,30% 62%,28% 55%,31% 48%,34% 42%,30% 35%,33% 28%,31% 20%,35% 12%,40% 5%)}
-
-.cv-corner{position:absolute;width:38px;height:38px;opacity:0.05;z-index:0}
-.cv-ctl{top:0;left:0;border-top:2.5px solid var(--g1);border-left:2.5px solid var(--g1)}
-.cv-cbr{bottom:0;right:0;border-bottom:2.5px solid var(--g1);border-right:2.5px solid var(--g1)}
+/* Corners */
+.cv-cn{position:absolute;width:32px;height:32px;opacity:0.05;z-index:0}
+.cv-tl{top:0;left:0;border-top:2px solid var(--g1);border-left:2px solid var(--g1)}
+.cv-br{bottom:0;right:0;border-bottom:2px solid var(--g1);border-right:2px solid var(--g1)}
 
 .cvb{position:relative;z-index:2;padding:0}
 
-/* HEADER */
-.cvhdr{text-align:center;padding-top:20px;padding-bottom:2px}
-.cvlr{display:flex;align-items:center;justify-content:center;gap:5px;margin-bottom:2px}
-.cvlc{width:20px;height:20px;border-radius:50%;background:linear-gradient(135deg,var(--g2),var(--g1));display:flex;align-items:center;justify-content:center;overflow:hidden;flex-shrink:0}
-.cvlc img{width:100%;height:100%;object-fit:cover;border-radius:50%}
-.cvlc-txt{color:#fff;font-weight:800;font-size:8px;font-family:'Poppins'}
-.cvsn{font-family:'Poppins';font-size:8.5px;font-weight:700;color:var(--g1)}
-.cvmt{font-size:13px;font-weight:800;color:var(--n2);margin-top:2px;letter-spacing:1.5px}
-.cvst{font-family:'Poppins';font-size:7px;color:#adb5bd;letter-spacing:3px;margin-top:1px;font-weight:500}
-.cvdv{width:50px;height:1.5px;background:linear-gradient(90deg,transparent,var(--g2),transparent);margin:4px auto 0}
+/* Header */
+.cvH{text-align:center;padding-top:22px;padding-bottom:1px}
+.cvLR{display:flex;align-items:center;justify-content:center;gap:5px;margin-bottom:2px}
+.cvLC{width:20px;height:20px;border-radius:50%;background:linear-gradient(135deg,var(--g2),var(--g1));display:flex;align-items:center;justify-content:center;overflow:hidden;flex-shrink:0}
+.cvLC img{width:100%;height:100%;object-fit:cover;border-radius:50%}
+.cvLC span{color:#fff;font-weight:800;font-size:8px;font-family:'Poppins'}
+.cvSN{font-family:'Poppins';font-size:8.5px;font-weight:700;color:var(--g1)}
+.cvMT{font-size:14px;font-weight:800;color:var(--n2);margin-top:2px;letter-spacing:1.5px}
+.cvST{font-family:'Poppins';font-size:7.5px;color:#adb5bd;letter-spacing:3.5px;margin-top:1px}
+.cvDV{width:55px;height:1.5px;background:linear-gradient(90deg,transparent,var(--g2),transparent);margin:4px auto 0}
 
-/* PROFILE */
-.cvpf{display:flex;gap:11px;align-items:flex-start;margin:7px 18px;padding:10px;background:linear-gradient(135deg,var(--g6),#f8fafc);border-radius:8px;border:1px solid #e9ecef;border-left:3px solid var(--g2)}
-.cvph{width:72px;height:90px;border-radius:8px;overflow:hidden;border:2px solid var(--g2);flex-shrink:0;background:#f1f3f5}
-.cvph img{width:100%;height:100%;object-fit:cover}
-.cvbs{flex:1;padding-top:0}
-.cvnm{font-size:13.5px;font-weight:800;color:var(--n2);line-height:1.3;margin-bottom:1px}
-.cvpo{font-size:8.5px;color:var(--g1);font-weight:700;margin-bottom:6px;display:flex;align-items:center;gap:3px}
-.cvpo-ico{color:var(--g1);font-size:7px}
-.cvil{display:flex;align-items:flex-start;gap:5px;margin-bottom:3.5px;font-size:8px;color:#495057;line-height:1.4}
-.cvic{width:14px;height:14px;border-radius:3.5px;background:linear-gradient(135deg,var(--g3),var(--g2));display:flex;align-items:center;justify-content:center;color:#fff;font-size:6.5px;flex-shrink:0;margin-top:1px}
+/* Profile */
+.cvPF{display:flex;gap:14px;align-items:flex-start;margin:9px 22px;padding:12px;background:linear-gradient(135deg,var(--g6),#f8fafc);border-radius:10px;border:1px solid #e9ecef;border-left:3px solid var(--g2)}
+.cvPH{width:100px;height:128px;border-radius:9px;overflow:hidden;border:2.5px solid var(--g2);flex-shrink:0;background:#f1f3f5;box-shadow:0 2px 8px rgba(0,0,0,0.08)}
+.cvPH img{display:block;width:100px;height:128px;object-fit:cover}
+.cvBS{flex:1;padding-top:2px}
+.cvNM{font-size:15px;font-weight:800;color:var(--n2);line-height:1.35;margin-bottom:2px}
+.cvPO{font-size:9.5px;color:var(--g1);font-weight:700;margin-bottom:8px;display:flex;align-items:center;gap:4px}
+.cvPO span.ico{display:inline-flex;width:14px;height:14px;border-radius:50%;background:var(--g2);align-items:center;justify-content:center;color:#fff;font-size:6.5px}
+.cvIL{display:flex;align-items:flex-start;gap:6px;margin-bottom:5px;font-size:9px;color:#495057;line-height:1.5}
+.cvIC{width:16px;height:16px;border-radius:4px;background:linear-gradient(135deg,var(--g3),var(--g2));display:flex;align-items:center;justify-content:center;color:#fff;font-size:7.5px;flex-shrink:0;margin-top:0}
+.cvIL span{flex:1}
 
-/* TWO COL */
-.cv2c{display:flex;gap:8px;margin:5px 18px 0}
-.cv2l,.cv2r{flex:1;min-width:0}
+/* Two Columns */
+.cv2C{display:flex;gap:10px;margin:8px 22px 0}
+.cv2L,.cv2R{flex:1;min-width:0}
 
-/* SECTIONS */
-.cvs{margin-bottom:5px}
-.cvsh{font-size:9px;font-weight:700;color:var(--n2);padding:4.5px 8px;background:linear-gradient(90deg,var(--g5),transparent);border-left:2.5px solid var(--g2);border-radius:0 5px 5px 0;margin-bottom:3px;display:flex;align-items:center;gap:4px}
-.cvsh-ico{font-size:8px;color:var(--g1)}
-.cvsb{padding:2px 8px;font-size:8px;line-height:1.85;color:#495057;white-space:pre-line;word-wrap:break-word}
-.cvfl{margin:3px 18px 0}
+/* Section */
+.cvS{margin-bottom:7px}
+.cvSH{font-size:10px;font-weight:700;color:var(--n2);padding:5px 10px;background:linear-gradient(90deg,var(--g5),rgba(220,252,231,0.2));border-left:3px solid var(--g2);border-radius:0 6px 6px 0;margin-bottom:4px;display:flex;align-items:center;gap:5px}
+.cvSH span.shI{display:inline-flex;width:14px;height:14px;border-radius:3px;background:var(--g1);align-items:center;justify-content:center;color:#fff;font-size:7px}
+.cvSB{padding:3px 10px;font-size:9px;line-height:1.9;color:#495057;white-space:pre-line;word-wrap:break-word}
+.cvFL{margin:5px 22px 0}
 
-/* SIGNATURE */
-.cvsg{margin:10px 18px 0;text-align:right;padding-right:8px}
-.cvsg img{max-width:105px;max-height:40px;display:block;margin-left:auto}
-.cvsg .sln{width:125px;border-top:1px solid #adb5bd;margin-left:auto;margin-top:2px;padding-top:2px;font-size:7px;color:#868e96;text-align:center}
+/* Signature */
+.cvSG{margin:14px 22px 0;text-align:right;padding-right:10px}
+.cvSG img{max-width:115px;max-height:45px;display:block;margin-left:auto}
+.cvSG .sl{width:135px;border-top:1px solid #adb5bd;margin-left:auto;margin-top:3px;padding-top:2px;font-size:7.5px;color:#868e96;text-align:center}
 
-/* FOOTER */
-.cvfb{position:absolute;bottom:6px;left:18px;right:18px;display:flex;justify-content:space-between;font-size:6px;color:#ced4da;z-index:3}
+/* Footer */
+.cvFB{position:absolute;bottom:7px;left:22px;right:22px;display:flex;justify-content:space-between;font-size:6.5px;color:#ced4da;z-index:3}
 
-@media(max-width:550px){
-  .cvwrap{justify-content:flex-start}
-  #cvTpl{transform-origin:top left;transform:scale(calc((100vw - 20px)/528))}
+@media(max-width:640px){
+  .cw #cvTpl{transform-origin:top left;transform:scale(calc((100vw - 20px)/620))}
 }
 @media print{
   body{background:#fff!important}
-  .hdr,.cvacts,.fcon{display:none!important}
-  .cvout{display:block!important;padding:0!important;margin:0!important}
-  #cvTpl{box-shadow:none!important}
+  .hdr,.ca,.fcon{display:none!important}
+  .co{display:block!important;padding:0!important;margin:0!important}
+  #cvTpl{box-shadow:none!important;transform:none!important}
 }
 </style>
 </head>
 <body>
 
-<div class="ld-ov" id="ldOv"><div class="ld-sp"></div><p>CV ဖန်တီးနေပါသည်...</p></div>
+<div class="ldov" id="ldOv">
+  <div class="ldsp"></div>
+  <p>UHD CV ဖန်တီးနေပါသည်...</p>
+  <small>A4 300DPI (2480x3508px)</small>
+</div>
 
 <header class="hdr">
 <div class="hdr-in">
-<div class="hdr-logo">
-<img src="YOUR_LOGO_URL_HERE" alt="" onerror="this.style.display='none';this.parentElement.querySelector('i').style.display='flex'">
+<div class="hdr-lg">
+<img src="https://ibb.co/TxjghzVv" alt="" onerror="this.style.display='none';this.parentElement.querySelector('i').style.display='flex'">
 <i class="fa-solid fa-file-lines" style="display:none"></i>
 </div>
-<div>
-<h1>Myanmar<em>CV</em> Builder</h1>
-<small>Professional CV ဖန်တီးရန်</small>
-</div>
+<div><h1>Myanmar<em>CV</em> Builder</h1><small>Professional UHD CV</small></div>
 </div>
 </header>
 
 <div class="fcon" id="fCon">
 
-<div class="fsec">
-<div class="stl"><div class="sic"><i class="fa-solid fa-user"></i></div>အမည်</div>
+<div class="fs"><div class="st"><div class="si"><i class="fa-solid fa-user"></i></div>အမည်</div>
 <div class="fg"><label>အမည် အပြည့်အစုံ <span class="rq">*</span></label>
-<input type="text" id="fName" placeholder="ဥပမာ - ကိုမင်းမင်း / Ko Min Min"></div>
-</div>
+<input type="text" id="fNm" placeholder="ဥပမာ - ကိုမင်းမင်း / Ko Min Min"></div></div>
 
-<div class="fsec">
-<div class="stl"><div class="sic"><i class="fa-solid fa-briefcase"></i></div>လုပ်ငန်းအတွေ့အကြုံ</div>
+<div class="fs"><div class="st"><div class="si"><i class="fa-solid fa-briefcase"></i></div>လုပ်ငန်းအတွေ့အကြုံ</div>
 <div class="fg"><label>အတွေ့အကြုံ အသေးစိတ်</label>
-<textarea id="fWork" rows="4" placeholder="ABC ကုမ္ပဏီ - Manager (၂၀၂၀-၂၀၂၃)&#10;XYZ ကုမ္ပဏီ - Staff (၂၀၁၈-၂၀၂၀)"></textarea></div>
-</div>
+<textarea id="fWk" rows="4" placeholder="ABC ကုမ္ပဏီ - Manager (၂၀၂၀-၂၀၂၃)&#10;XYZ ကုမ္ပဏီ - Staff (၂၀၁၈-၂၀၂၀)"></textarea></div></div>
 
-<div class="fsec">
-<div class="stl"><div class="sic"><i class="fa-solid fa-clipboard-list"></i></div>ကိုယ်ရေးကိုယ်တာ</div>
+<div class="fs"><div class="st"><div class="si"><i class="fa-solid fa-clipboard-list"></i></div>ကိုယ်ရေးကိုယ်တာ</div>
 <div class="fg"><label>ကိုယ်ရေးကိုယ်တာ အချက်အလက်</label>
-<textarea id="fPers" rows="4" placeholder="မွေးသက္ကရာဇ် - ၁၉၉၅ ဇန်နဝါရီ ၁ ရက်&#10;ကျား/မ - ကျား&#10;ပညာ - B.Sc (Computer Science)"></textarea></div>
-</div>
+<textarea id="fPe" rows="4" placeholder="မွေးသက္ကရာဇ် - ၁၉၉၅&#10;ကျား/မ - ကျား&#10;ပညာ - B.Sc (CS)&#10;မှတ်ပုံတင် - ၁၂/abc(နိုင်)123456"></textarea></div></div>
 
-<div class="fsec">
-<div class="stl"><div class="sic"><i class="fa-solid fa-money-bill-wave"></i></div>မျှော်မှန်းလစာ</div>
+<div class="fs"><div class="st"><div class="si"><i class="fa-solid fa-money-bill-wave"></i></div>မျှော်မှန်းလစာ</div>
 <div class="fg"><label>မျှော်မှန်းလစာ</label>
-<input type="text" id="fSal" placeholder="ဥပမာ - ၅၀၀,၀၀၀ ကျပ်"></div>
-</div>
+<input type="text" id="fSl" placeholder="ဥပမာ - ၅၀၀,၀၀၀ ကျပ်"></div></div>
 
-<div class="fsec">
-<div class="stl"><div class="sic"><i class="fa-solid fa-bullseye"></i></div>လျှောက်ထားလိုသည့် ရာထူး</div>
+<div class="fs"><div class="st"><div class="si"><i class="fa-solid fa-bullseye"></i></div>လျှောက်ထားလိုသည့် ရာထူး</div>
 <div class="fg"><label>ရာထူး <span class="rq">*</span></label>
-<input type="text" id="fPos" placeholder="ဥပမာ - Senior Sales Manager"></div>
-</div>
+<input type="text" id="fPs" placeholder="ဥပမာ - Senior Sales Manager"></div></div>
 
-<div class="fsec">
-<div class="stl"><div class="sic"><i class="fa-solid fa-location-dot"></i></div>လိပ်စာ</div>
+<div class="fs"><div class="st"><div class="si"><i class="fa-solid fa-location-dot"></i></div>လိပ်စာ</div>
 <div class="fg"><label>နေရပ်လိပ်စာ</label>
-<textarea id="fAddr" rows="2" placeholder="အမှတ်(၁၂၃)၊ လှိုင်မြို့နယ်၊ ရန်ကုန်"></textarea></div>
-</div>
+<textarea id="fAd" rows="2" placeholder="အမှတ်(၁၂၃)၊ လှိုင်မြို့နယ်၊ ရန်ကုန်"></textarea></div></div>
 
-<div class="fsec">
-<div class="stl"><div class="sic"><i class="fa-solid fa-phone"></i></div>ဖုန်းနံပါတ်</div>
+<div class="fs"><div class="st"><div class="si"><i class="fa-solid fa-phone"></i></div>ဖုန်းနံပါတ်</div>
 <div class="fg"><label>ဖုန်းနံပါတ် <span class="rq">*</span></label>
-<input type="tel" id="fPhone" placeholder="09-xxx-xxx-xxx"></div>
-</div>
+<input type="tel" id="fPh" placeholder="09-xxx-xxx-xxx"></div></div>
 
-<div class="fsec">
-<div class="stl"><div class="sic"><i class="fa-solid fa-signature"></i></div>လက်မှတ်ထိုးရန်</div>
+<div class="fs"><div class="st"><div class="si"><i class="fa-solid fa-signature"></i></div>လက်မှတ်ထိုးရန်</div>
 <div class="fg">
 <label>ဘောင်ထဲတွင် လက်မှတ်ထိုးပါ</label>
-<div class="sgbx"><canvas id="sgCv"></canvas></div>
-<div class="sgac"><button class="bsg" onclick="clrSig()" type="button"><i class="fa-solid fa-eraser"></i> ဖျက်၍ ပြန်ရေးရန်</button></div>
-<div class="sght"><i class="fa-solid fa-circle-info"></i> မကြိုက်ပါက ဖျက်ပြီး ပြန်ထိုးနိုင်ပါသည်</div>
-</div>
-</div>
+<div class="sgb"><canvas id="sgC"></canvas></div>
+<div class="sga"><button class="bsg" onclick="clrSig()" type="button"><i class="fa-solid fa-eraser"></i> ဖျက်၍ ပြန်ရေးရန်</button></div>
+<div class="sgi"><i class="fa-solid fa-circle-info"></i> မကြိုက်ပါက ဖျက်ပြီး ပြန်ထိုးနိုင်ပါသည်</div>
+</div></div>
 
-<div class="fsec">
-<div class="stl"><div class="sic"><i class="fa-solid fa-camera"></i></div>ဓာတ်ပုံတင်ရန်</div>
+<div class="fs"><div class="st"><div class="si"><i class="fa-solid fa-camera"></i></div>ဓာတ်ပုံတင်ရန်</div>
 <div class="fg">
 <label>ဓာတ်ပုံ <span class="rq">*</span></label>
-<div class="pha" id="phArea" onclick="document.getElementById('phIn').click()">
-<i class="fa-solid fa-cloud-arrow-up phi"></i>
-<div class="pht">ဓာတ်ပုံ ရွေးရန် နှိပ်ပါ</div>
-<div class="phh">JPG, PNG, WEBP</div>
+<div class="pa" id="pA" onclick="document.getElementById('phIn').click()">
+<i class="fa-solid fa-cloud-arrow-up pi"></i>
+<div class="pt">ဓာတ်ပုံ ရွေးရန် နှိပ်ပါ</div><div class="ph">JPG, PNG, WEBP</div>
 </div>
-<div class="phpr" id="phPr">
-<img id="phIm" src="" alt="">
-<div class="phc" onclick="document.getElementById('phIn').click()"><i class="fa-solid fa-camera-rotate"></i> ပုံပြောင်းရန်</div>
-</div>
-<input type="file" id="phIn" accept="image/*" onchange="pvPh(this)">
-</div>
+<div class="pp" id="pP"><img id="pI" src="" alt="">
+<div class="pc" onclick="document.getElementById('phIn').click()"><i class="fa-solid fa-camera-rotate"></i> ပုံပြောင်းရန်</div></div>
+<input type="file" id="phIn" accept="image/*" onchange="handlePhoto(this)">
+</div></div>
+
+<button class="bg" onclick="genCV()" type="button"><i class="fa-solid fa-wand-magic-sparkles"></i> CV ဖောင် ဖန်တီးမည်</button>
+<div class="ff">A4 စာရွက် အရွယ်အစား UHD 300DPI PNG ထွက်ပါမည်</div>
 </div>
 
-<button class="bgen" onclick="genCV()" type="button"><i class="fa-solid fa-wand-magic-sparkles"></i> CV ဖောင် ဖန်တီးမည်</button>
-<div class="fft">အချက်အလက်အားလုံး ဖြည့်စွက်ပြီးမှ ဖန်တီးပါ</div>
-</div>
-
-<!-- CV OUTPUT -->
-<div class="cvout" id="cvOut">
-<div class="cvacts">
-<button class="ba bdl" onclick="dlCV()"><i class="fa-solid fa-download"></i> PNG Download</button>
+<!-- ===== CV OUTPUT ===== -->
+<div class="co" id="cvOut">
+<div class="ca">
+<button class="ba bdl" onclick="dlCV()"><i class="fa-solid fa-download"></i> UHD PNG Download</button>
 <button class="ba bpr" onclick="window.print()"><i class="fa-solid fa-print"></i> Print</button>
 <button class="ba bbk" onclick="goBack()"><i class="fa-solid fa-arrow-rotate-left"></i> ပြန်ပြင်ရန်</button>
 </div>
 
-<div class="cvwrap">
+<div class="cw">
 <div id="cvTpl">
 
-<!-- TOP DECORATION -->
-<div class="cv-top-bar">
-<div class="cv-top-wave1"></div>
-<div class="cv-top-wave2"></div>
-</div>
+<!-- Decorations - Canvas generated PNGs -->
+<img id="wvTop" class="cv-deco" src="" alt="">
+<img id="wvBot" class="cv-deco" src="" alt="">
+<img id="mapBg" class="cv-deco" src="" alt="">
+<div class="cv-sa"></div>
+<div class="cv-cn cv-tl"></div>
+<div class="cv-cn cv-br"></div>
 
-<!-- BOTTOM DECORATION -->
-<div class="cv-bot-bar">
-<div class="cv-bot-wave1"></div>
-<div class="cv-bot-wave2"></div>
-</div>
-
-<!-- SIDE ACCENT -->
-<div class="cv-side"></div>
-
-<!-- MAP WATERMARK -->
-<div class="cv-map"></div>
-
-<!-- CORNERS -->
-<div class="cv-corner cv-ctl"></div>
-<div class="cv-corner cv-cbr"></div>
-
-<!-- CV BODY -->
 <div class="cvb">
 
-<div class="cvhdr">
-<div class="cvlr">
-<div class="cvlc">
-<img src="YOUR_LOGO_URL_HERE" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
-<span class="cvlc-txt" style="display:none">C</span>
+<!-- Header -->
+<div class="cvH">
+<div class="cvLR">
+<div class="cvLC">
+<img src="https://ibb.co/TxjghzVv" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'">
+<span style="display:none">CV</span>
 </div>
-<span class="cvsn">MyanmarCV Builder</span>
+<span class="cvSN">MyanmarCV Builder</span>
 </div>
-<div class="cvmt">ကိုယ်ရေးအကျဉ်းချုပ်</div>
-<div class="cvst">CURRICULUM VITAE</div>
-<div class="cvdv"></div>
-</div>
-
-<div class="cvpf">
-<div class="cvph"><img id="cvPhoto" src="" alt=""></div>
-<div class="cvbs">
-<div class="cvnm" id="cvNm"></div>
-<div class="cvpo"><span class="cvpo-ico">&#9678;</span> <span id="cvPs"></span></div>
-<div class="cvil"><div class="cvic">&#9742;</div><span id="cvPh"></span></div>
-<div class="cvil"><div class="cvic">&#9873;</div><span id="cvAd"></span></div>
-<div class="cvil"><div class="cvic">&#9733;</div><span>မျှော်မှန်းလစာ - <b id="cvSl"></b></span></div>
-</div>
+<div class="cvMT">ကိုယ်ရေးအကျဉ်းချုပ်</div>
+<div class="cvST">CURRICULUM VITAE</div>
+<div class="cvDV"></div>
 </div>
 
-<div class="cv2c">
-<div class="cv2l">
-<div class="cvs">
-<div class="cvsh"><span class="cvsh-ico">&#9632;</span> ကိုယ်ရေးကိုယ်တာ</div>
-<div class="cvsb" id="cvPe"></div>
-</div>
-</div>
-<div class="cv2r">
-<div class="cvs">
-<div class="cvsh"><span class="cvsh-ico">&#9632;</span> လုပ်ငန်းအတွေ့အကြုံ</div>
-<div class="cvsb" id="cvWk"></div>
-</div>
+<!-- Profile -->
+<div class="cvPF">
+<div class="cvPH"><img id="cvPhoto" src="" alt=""></div>
+<div class="cvBS">
+<div class="cvNM" id="cvNm"></div>
+<div class="cvPO"><span class="ico">&#10003;</span> <span id="cvPs"></span></div>
+<div class="cvIL"><div class="cvIC">&#9742;</div><span id="cvPh"></span></div>
+<div class="cvIL"><div class="cvIC">&#9873;</div><span id="cvAd"></span></div>
+<div class="cvIL"><div class="cvIC">&#9733;</div><span>မျှော်မှန်းလစာ - <b id="cvSl"></b></span></div>
 </div>
 </div>
 
-<div class="cvfl">
-<div class="cvs">
-<div class="cvsh"><span class="cvsh-ico">&#9632;</span> လျှောက်ထားလိုသည့် ရာထူး</div>
-<div class="cvsb" id="cvPD"></div>
+<!-- Two Columns -->
+<div class="cv2C">
+<div class="cv2L">
+<div class="cvS">
+<div class="cvSH"><span class="shI">&#9632;</span> ကိုယ်ရေးကိုယ်တာ အချက်အလက်</div>
+<div class="cvSB" id="cvPe"></div>
+</div>
+</div>
+<div class="cv2R">
+<div class="cvS">
+<div class="cvSH"><span class="shI">&#9632;</span> လုပ်ငန်းအတွေ့အကြုံ</div>
+<div class="cvSB" id="cvWk"></div>
+</div>
 </div>
 </div>
 
-<div class="cvsg">
+<!-- Position -->
+<div class="cvFL">
+<div class="cvS">
+<div class="cvSH"><span class="shI">&#9632;</span> လျှောက်ထားလိုသည့် ရာထူး</div>
+<div class="cvSB" id="cvPD"></div>
+</div>
+</div>
+
+<!-- Signature -->
+<div class="cvSG">
 <img id="cvSg" src="" alt="">
-<div class="sln">လက်မှတ်</div>
+<div class="sl">လက်မှတ်</div>
 </div>
 
-</div>
+</div><!-- cvb -->
 
-<div class="cvfb">
+<div class="cvFB">
 <span>&#9670; Generated by MyanmarCV Builder</span>
 <span id="cvDt"></span>
 </div>
-
-</div>
+</div><!-- cvTpl -->
 </div>
 </div>
 
 <script>
-/* SIGNATURE */
-const sc=document.getElementById('sgCv'),sx=sc.getContext('2d');
-let dr=false,lx=0,ly=0;
+/* ============ CANVAS DECORATION GENERATOR ============ */
+function genWaveTop(w,h){
+  var c=document.createElement('canvas');c.width=w*2;c.height=h*2;
+  var x=c.getContext('2d');x.scale(2,2);
+  // Wave layer 1
+  var g1=x.createLinearGradient(0,0,w,0);
+  g1.addColorStop(0,'rgba(22,101,52,0.82)');
+  g1.addColorStop(0.4,'rgba(34,197,94,0.55)');
+  g1.addColorStop(0.7,'rgba(74,222,128,0.35)');
+  g1.addColorStop(1,'rgba(134,239,172,0.18)');
+  x.fillStyle=g1;
+  x.beginPath();x.moveTo(0,0);x.lineTo(w,0);
+  x.lineTo(w,h*0.48);
+  x.bezierCurveTo(w*0.82,h*0.88,w*0.65,h*0.35,w*0.45,h*0.72);
+  x.bezierCurveTo(w*0.3,h*0.95,w*0.12,h*0.55,0,h*0.68);
+  x.closePath();x.fill();
+  // Wave layer 2
+  var g2=x.createLinearGradient(0,0,w,0);
+  g2.addColorStop(0,'rgba(20,83,45,0.38)');
+  g2.addColorStop(0.5,'rgba(34,197,94,0.2)');
+  g2.addColorStop(1,'rgba(74,222,128,0.08)');
+  x.fillStyle=g2;
+  x.beginPath();x.moveTo(0,0);x.lineTo(w,0);
+  x.lineTo(w,h*0.32);
+  x.bezierCurveTo(w*0.78,h*0.62,w*0.55,h*0.22,w*0.35,h*0.52);
+  x.bezierCurveTo(w*0.2,h*0.68,w*0.08,h*0.42,0,h*0.48);
+  x.closePath();x.fill();
+  // Wave layer 3 (subtle)
+  x.fillStyle='rgba(187,247,208,0.12)';
+  x.beginPath();x.moveTo(0,0);x.lineTo(w,0);
+  x.lineTo(w,h*0.18);
+  x.bezierCurveTo(w*0.7,h*0.38,w*0.4,h*0.1,w*0.15,h*0.3);
+  x.bezierCurveTo(w*0.06,h*0.38,0,h*0.22,0,h*0.28);
+  x.closePath();x.fill();
+  return c.toDataURL('image/png');
+}
+
+function genWaveBot(w,h){
+  var c=document.createElement('canvas');c.width=w*2;c.height=h*2;
+  var x=c.getContext('2d');x.scale(2,2);
+  var g1=x.createLinearGradient(0,0,w,0);
+  g1.addColorStop(0,'rgba(22,101,52,0.78)');
+  g1.addColorStop(0.4,'rgba(34,197,94,0.5)');
+  g1.addColorStop(0.7,'rgba(74,222,128,0.3)');
+  g1.addColorStop(1,'rgba(134,239,172,0.15)');
+  x.fillStyle=g1;
+  x.beginPath();
+  x.moveTo(0,h*0.45);
+  x.bezierCurveTo(w*0.1,h*0.15,w*0.25,h*0.55,w*0.42,h*0.28);
+  x.bezierCurveTo(w*0.58,h*0.05,w*0.78,h*0.48,w,h*0.35);
+  x.lineTo(w,h);x.lineTo(0,h);x.closePath();x.fill();
+  // Layer 2
+  var g2=x.createLinearGradient(0,0,w,0);
+  g2.addColorStop(0,'rgba(20,83,45,0.32)');
+  g2.addColorStop(1,'rgba(74,222,128,0.12)');
+  x.fillStyle=g2;
+  x.beginPath();
+  x.moveTo(0,h*0.62);
+  x.bezierCurveTo(w*0.15,h*0.38,w*0.35,h*0.7,w*0.55,h*0.42);
+  x.bezierCurveTo(w*0.72,h*0.2,w*0.88,h*0.52,w,h*0.48);
+  x.lineTo(w,h);x.lineTo(0,h);x.closePath();x.fill();
+  return c.toDataURL('image/png');
+}
+
+function genMap(w,h){
+  var c=document.createElement('canvas');c.width=w*2;c.height=h*2;
+  var x=c.getContext('2d');x.scale(2,2);
+  x.fillStyle='#166534';
+  var cx=w/2;
+  x.beginPath();
+  x.moveTo(cx-4,3);
+  x.quadraticCurveTo(cx,0,cx+4,3);
+  x.quadraticCurveTo(cx+10,8,cx+16,18);
+  x.quadraticCurveTo(cx+24,30,cx+32,42);
+  x.quadraticCurveTo(cx+38,52,cx+35,62);
+  x.quadraticCurveTo(cx+32,72,cx+28,82);
+  x.quadraticCurveTo(cx+24,92,cx+20,102);
+  x.quadraticCurveTo(cx+16,115,cx+13,128);
+  x.quadraticCurveTo(cx+10,142,cx+8,158);
+  x.quadraticCurveTo(cx+6,175,cx+5,192);
+  x.quadraticCurveTo(cx+3,208,cx+2,225);
+  x.quadraticCurveTo(cx+1,238,cx,h);
+  x.quadraticCurveTo(cx-1,238,cx-2,225);
+  x.quadraticCurveTo(cx-3,208,cx-5,192);
+  x.quadraticCurveTo(cx-6,175,cx-8,158);
+  x.quadraticCurveTo(cx-10,142,cx-13,128);
+  x.quadraticCurveTo(cx-16,115,cx-20,102);
+  x.quadraticCurveTo(cx-24,92,cx-28,82);
+  x.quadraticCurveTo(cx-32,72,cx-35,62);
+  x.quadraticCurveTo(cx-38,52,cx-32,42);
+  x.quadraticCurveTo(cx-24,30,cx-16,18);
+  x.quadraticCurveTo(cx-10,8,cx-4,3);
+  x.closePath();x.fill();
+  return c.toDataURL('image/png');
+}
+
+function initDecos(){
+  document.getElementById('wvTop').src=genWaveTop(620,65);
+  document.getElementById('wvBot').src=genWaveBot(620,55);
+  document.getElementById('mapBg').src=genMap(130,250);
+}
+
+/* ============ SIGNATURE PAD ============ */
+var sc=document.getElementById('sgC'),sx=sc.getContext('2d');
+var dr=false,lx=0,ly=0;
 function initSg(){
-  const r=sc.parentElement.getBoundingClientRect(),dp=window.devicePixelRatio||1,w=r.width-10,h=145;
+  var r=sc.parentElement.getBoundingClientRect(),dp=window.devicePixelRatio||1;
+  var w=r.width-8,h=135;
   sc.style.width=w+'px';sc.style.height=h+'px';
   sc.width=w*dp;sc.height=h*dp;
   sx.scale(dp,dp);
   sx.strokeStyle='#1e3a5f';sx.lineWidth=2.5;sx.lineCap='round';sx.lineJoin='round';
 }
-function gp(e){const r=sc.getBoundingClientRect(),t=e.touches?e.touches[0]:e;return{x:t.clientX-r.left,y:t.clientY-r.top}}
-function sd(e){dr=true;const p=gp(e);lx=p.x;ly=p.y;e.preventDefault()}
-function md(e){if(!dr)return;e.preventDefault();const p=gp(e);sx.beginPath();sx.moveTo(lx,ly);sx.lineTo(p.x,p.y);sx.stroke();lx=p.x;ly=p.y}
-function ed(){dr=false}
-sc.addEventListener('mousedown',sd);sc.addEventListener('mousemove',md);sc.addEventListener('mouseup',ed);sc.addEventListener('mouseleave',ed);
-sc.addEventListener('touchstart',sd,{passive:false});sc.addEventListener('touchmove',md,{passive:false});sc.addEventListener('touchend',ed);
-function clrSig(){const dp=window.devicePixelRatio||1;sx.setTransform(1,0,0,1,0,0);sx.clearRect(0,0,sc.width,sc.height);sx.scale(dp,dp);sx.strokeStyle='#1e3a5f';sx.lineWidth=2.5;sx.lineCap='round';sx.lineJoin='round'}
-window.addEventListener('load',initSg);
-window.addEventListener('resize',initSg);
+function gp(e){var r=sc.getBoundingClientRect(),t=e.touches?e.touches[0]:e;return{x:t.clientX-r.left,y:t.clientY-r.top}}
+sc.addEventListener('mousedown',function(e){dr=true;var p=gp(e);lx=p.x;ly=p.y;e.preventDefault()});
+sc.addEventListener('mousemove',function(e){if(!dr)return;e.preventDefault();var p=gp(e);sx.beginPath();sx.moveTo(lx,ly);sx.lineTo(p.x,p.y);sx.stroke();lx=p.x;ly=p.y});
+sc.addEventListener('mouseup',function(){dr=false});
+sc.addEventListener('mouseleave',function(){dr=false});
+sc.addEventListener('touchstart',function(e){dr=true;var p=gp(e);lx=p.x;ly=p.y;e.preventDefault()},{passive:false});
+sc.addEventListener('touchmove',function(e){if(!dr)return;e.preventDefault();var p=gp(e);sx.beginPath();sx.moveTo(lx,ly);sx.lineTo(p.x,p.y);sx.stroke();lx=p.x;ly=p.y},{passive:false});
+sc.addEventListener('touchend',function(){dr=false});
+function clrSig(){var dp=window.devicePixelRatio||1;sx.setTransform(1,0,0,1,0,0);sx.clearRect(0,0,sc.width,sc.height);sx.scale(dp,dp);sx.strokeStyle='#1e3a5f';sx.lineWidth=2.5;sx.lineCap='round';sx.lineJoin='round'}
 
-/* PHOTO */
-let pU='';
-function pvPh(inp){
-  if(inp.files&&inp.files[0]){
-    const r=new FileReader();
-    r.onload=function(e){
-      pU=e.target.result;
-      document.getElementById('phIm').src=pU;
-      document.getElementById('phPr').style.display='block';
-      document.getElementById('phArea').style.display='none';
+/* ============ PHOTO - CROP TO FRAME ============ */
+var processedPhoto='';
+function handlePhoto(inp){
+  if(!inp.files||!inp.files[0])return;
+  var reader=new FileReader();
+  reader.onload=function(e){
+    var raw=e.target.result;
+    // Crop to 100:128 ratio (passport photo)
+    var img=new Image();
+    img.onload=function(){
+      var cv=document.createElement('canvas');
+      var tw=800,th=1024; // High res crop
+      cv.width=tw;cv.height=th;
+      var cx=cv.getContext('2d');
+      var ratio=tw/th;
+      var iRatio=img.width/img.height;
+      var sx2,sy2,sw,sh;
+      if(iRatio>ratio){sh=img.height;sw=sh*ratio;sx2=(img.width-sw)/2;sy2=0}
+      else{sw=img.width;sh=sw/ratio;sx2=0;sy2=(img.height-sh)/2}
+      cx.drawImage(img,sx2,sy2,sw,sh,0,0,tw,th);
+      processedPhoto=cv.toDataURL('image/png',1.0);
+      document.getElementById('pI').src=processedPhoto;
+      document.getElementById('pP').style.display='block';
+      document.getElementById('pA').style.display='none';
     };
-    r.readAsDataURL(inp.files[0]);
-  }
+    img.src=raw;
+  };
+  reader.readAsDataURL(inp.files[0]);
 }
 
-/* GENERATE */
+/* ============ GENERATE CV ============ */
 function genCV(){
-  const nm=document.getElementById('fName').value.trim(),
-    wk=document.getElementById('fWork').value.trim(),
-    pe=document.getElementById('fPers').value.trim(),
-    sl=document.getElementById('fSal').value.trim(),
-    ps=document.getElementById('fPos').value.trim(),
-    ad=document.getElementById('fAddr').value.trim(),
-    ph=document.getElementById('fPhone').value.trim();
+  var nm=document.getElementById('fNm').value.trim();
+  var wk=document.getElementById('fWk').value.trim();
+  var pe=document.getElementById('fPe').value.trim();
+  var sl=document.getElementById('fSl').value.trim();
+  var ps=document.getElementById('fPs').value.trim();
+  var ad=document.getElementById('fAd').value.trim();
+  var ph=document.getElementById('fPh').value.trim();
   if(!nm){alert('အမည် ထည့်သွင်းပါ');return}
   if(!ps){alert('ရာထူး ထည့်သွင်းပါ');return}
   if(!ph){alert('ဖုန်းနံပါတ် ထည့်သွင်းပါ');return}
-  if(!pU){alert('ဓာတ်ပုံ Upload တင်ပါ');return}
+  if(!processedPhoto){alert('ဓာတ်ပုံ Upload တင်ပါ');return}
 
+  // Generate decoration images
+  initDecos();
+
+  // Fill CV
   document.getElementById('cvNm').textContent=nm;
   document.getElementById('cvPs').textContent=ps;
   document.getElementById('cvPh').textContent=ph;
@@ -404,10 +489,10 @@ function genCV(){
   document.getElementById('cvPe').textContent=pe||'-';
   document.getElementById('cvWk').textContent=wk||'-';
   document.getElementById('cvPD').textContent=ps;
-  document.getElementById('cvPhoto').src=pU;
+  document.getElementById('cvPhoto').src=processedPhoto;
   document.getElementById('cvSg').src=sc.toDataURL('image/png');
 
-  const d=new Date(),mo=['ဇန်နဝါရီ','ဖေဖော်ဝါရီ','မတ်','ဧပြီ','မေ','ဇွန်','ဇူလိုင်','သြဂုတ်','စက်တင်ဘာ','အောက်တိုဘာ','နိုဝင်ဘာ','ဒီဇင်ဘာ'];
+  var d=new Date(),mo=['ဇန်နဝါရီ','ဖေဖော်ဝါရီ','မတ်','ဧပြီ','မေ','ဇွန်','ဇူလိုင်','သြဂုတ်','စက်တင်ဘာ','အောက်တိုဘာ','နိုဝင်ဘာ','ဒီဇင်ဘာ'];
   document.getElementById('cvDt').textContent=d.getFullYear()+' '+mo[d.getMonth()]+' '+d.getDate()+' ရက်';
 
   document.getElementById('fCon').style.display='none';
@@ -415,59 +500,61 @@ function genCV(){
   window.scrollTo({top:0,behavior:'smooth'});
 }
 
-/* ====== HIGH QUALITY PNG DOWNLOAD ====== */
+/* ============ UHD PNG DOWNLOAD ============ */
+/* A4 at 300DPI = 2480 x 3508 px */
+/* Template 620x877 * scale 4 = 2480 x 3508 */
 function dlCV(){
-  const ov=document.getElementById('ldOv');
+  var ov=document.getElementById('ldOv');
   ov.style.display='flex';
 
-  /* Wait for all fonts to load */
+  // Wait for fonts + images
   document.fonts.ready.then(function(){
-    const el=document.getElementById('cvTpl');
+    // Extra delay for images to fully render
+    setTimeout(function(){
+      var el=document.getElementById('cvTpl');
 
-    html2canvas(el,{
-      scale: 4,                    /* 4x for crystal clear */
-      useCORS: true,
-      allowTaint: true,
-      backgroundColor: '#ffffff',
-      width: 528,
-      height: 1280,
-      scrollX: 0,
-      scrollY: 0,
-      windowWidth: 528,
-      windowHeight: 1280,
-      imageTimeout: 0,
-      logging: false,
-      onclone: function(clonedDoc){
-        /* Ensure cloned element has exact size */
-        var cloned = clonedDoc.getElementById('cvTpl');
-        cloned.style.width = '528px';
-        cloned.style.height = '1280px';
-        cloned.style.overflow = 'hidden';
-        cloned.style.transform = 'none';
-        cloned.style.boxShadow = 'none';
-      }
-    }).then(function(canvas){
-      /* canvas is 2112x5120 (528*4 x 1280*4) - super sharp */
-      ov.style.display='none';
-
-      /* Convert to blob for better quality */
-      canvas.toBlob(function(blob){
-        var url = URL.createObjectURL(blob);
-        var a = document.createElement('a');
-        var n = document.getElementById('cvNm').textContent.replace(/\s+/g,'_');
-        a.download = 'CV_' + n + '_HD.png';
-        a.href = url;
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-        setTimeout(function(){ URL.revokeObjectURL(url) }, 5000);
-      }, 'image/png', 1.0);
-
-    }).catch(function(err){
-      ov.style.display='none';
-      console.error('html2canvas error:', err);
-      alert('Download မအောင်မြင်ပါ။ ထပ်ကြိုးစားပါ။');
-    });
+      html2canvas(el,{
+        scale: 4,
+        useCORS: true,
+        allowTaint: true,
+        backgroundColor: '#ffffff',
+        width: 620,
+        height: 877,
+        scrollX: 0,
+        scrollY: 0,
+        windowWidth: 620,
+        windowHeight: 877,
+        logging: false,
+        imageTimeout: 15000,
+        onclone: function(doc){
+          var t=doc.getElementById('cvTpl');
+          t.style.transform='none';
+          t.style.boxShadow='none';
+          t.style.borderRadius='0';
+          // Ensure photo renders at full size
+          var ph=doc.getElementById('cvPhoto');
+          if(ph){ph.style.width='100px';ph.style.height='128px';ph.style.objectFit='cover'}
+        }
+      }).then(function(canvas){
+        // canvas = 2480 x 3508 (UHD A4 300DPI)
+        ov.style.display='none';
+        canvas.toBlob(function(blob){
+          var url=URL.createObjectURL(blob);
+          var a=document.createElement('a');
+          var n=document.getElementById('cvNm').textContent.replace(/\s+/g,'_');
+          a.download='CV_'+n+'_UHD_A4.png';
+          a.href=url;
+          document.body.appendChild(a);
+          a.click();
+          document.body.removeChild(a);
+          setTimeout(function(){URL.revokeObjectURL(url)},8000);
+        },'image/png');
+      }).catch(function(err){
+        ov.style.display='none';
+        console.error(err);
+        alert('Download မအောင်မြင်ပါ။ ထပ်ကြိုးစားပါ။');
+      });
+    },500);
   });
 }
 
@@ -476,6 +563,13 @@ function goBack(){
   document.getElementById('cvOut').style.display='none';
   window.scrollTo({top:0,behavior:'smooth'});
 }
+
+/* INIT */
+window.addEventListener('load',function(){
+  initSg();
+  initDecos();
+});
+window.addEventListener('resize',initSg);
 </script>
 </body>
 </html>
