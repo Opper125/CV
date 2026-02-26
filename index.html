@@ -4,41 +4,41 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MyanmarCV Builder</title>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Myanmar:wght@300;400;500;600;700;800;900&family=Padauk:wght@400;700&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Myanmar:wght@100;200;300;400;500;600;700;800;900&family=Noto+Sans+Myanmar:wght@400;600;700;800&family=Padauk:wght@400;700&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-:root{--g1:#166534;--g2:#22c55e;--g3:#4ade80;--g5:#dcfce7;--g6:#f0fdf4;--n2:#1e3a5f}
-body{font-family:'Noto Sans Myanmar','Padauk','Poppins',sans-serif;background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);min-height:100vh;color:#333}
-::-webkit-scrollbar{width:6px}::-webkit-scrollbar-thumb{background:var(--g2);border-radius:4px}
+:root{--b1:#1e3a8a;--b2:#2563eb;--b3:#3b82f6;--b4:#60a5fa;--b5:#93c5fd;--b6:#dbeafe;--b7:#eff6ff;--n2:#1e293b;--gl:0 0 18px rgba(59,130,246,0.25)}
+body{font-family:'Noto Sans Myanmar','Padauk','Poppins',sans-serif;background:linear-gradient(135deg,#0c1222,#1a2744,#1e3a5f);min-height:100vh;color:#333}
+::-webkit-scrollbar{width:6px}::-webkit-scrollbar-thumb{background:var(--b3);border-radius:4px}
 
 .ldov{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.92);z-index:99999;justify-content:center;align-items:center;flex-direction:column}
-.ldsp{width:50px;height:50px;border:4px solid rgba(255,255,255,0.12);border-top:4px solid var(--g3);border-radius:50%;animation:sp .7s linear infinite;margin-bottom:14px}
+.ldsp{width:50px;height:50px;border:4px solid rgba(255,255,255,0.1);border-top:4px solid var(--b4);border-radius:50%;animation:sp .7s linear infinite;margin-bottom:14px}
 @keyframes sp{to{transform:rotate(360deg)}}
 .ldov p{color:#fff;font-size:14px}.ldov small{color:rgba(255,255,255,0.5);font-size:11px;margin-top:5px}
 
-.hdr{background:linear-gradient(135deg,rgba(22,101,52,0.22),rgba(34,197,94,0.06));backdrop-filter:blur(20px);padding:14px;text-align:center;border-bottom:1px solid rgba(74,222,128,0.2);position:sticky;top:0;z-index:100}
+.hdr{background:linear-gradient(135deg,rgba(30,58,138,0.25),rgba(37,99,235,0.08));backdrop-filter:blur(20px);padding:14px;text-align:center;border-bottom:1px solid rgba(59,130,246,0.2);position:sticky;top:0;z-index:100}
 .hdr-in{max-width:560px;margin:0 auto;display:flex;align-items:center;justify-content:center;gap:10px}
-.hdr-lg{width:40px;height:40px;border-radius:10px;background:linear-gradient(135deg,var(--g2),var(--g1));display:flex;align-items:center;justify-content:center;overflow:hidden;flex-shrink:0;box-shadow:0 3px 10px rgba(34,197,94,0.3)}
+.hdr-lg{width:40px;height:40px;border-radius:10px;background:linear-gradient(135deg,var(--b3),var(--b1));display:flex;align-items:center;justify-content:center;overflow:hidden;flex-shrink:0;box-shadow:var(--gl)}
 .hdr-lg img{width:100%;height:100%;object-fit:cover;border-radius:10px}
 .hdr-lg i{color:#fff;font-size:17px}
 .hdr h1{color:#fff;font-family:'Poppins';font-size:18px;font-weight:700}
-.hdr h1 em{color:var(--g3);font-style:normal}
+.hdr h1 em{color:var(--b4);font-style:normal}
 .hdr small{color:rgba(255,255,255,0.4);font-size:10px;display:block;margin-top:1px}
 
 .fcon{max-width:540px;margin:16px auto;padding:0 11px 30px}
 .fs{background:rgba(255,255,255,0.97);border-radius:13px;padding:16px 18px;margin-bottom:9px;box-shadow:0 3px 14px rgba(0,0,0,0.12);position:relative;overflow:hidden;animation:fu .3s ease-out}
-.fs::before{content:'';position:absolute;top:0;left:0;width:3px;height:100%;background:linear-gradient(180deg,var(--g2),var(--g1))}
+.fs::before{content:'';position:absolute;top:0;left:0;width:3px;height:100%;background:linear-gradient(180deg,var(--b3),var(--b1))}
 @keyframes fu{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
-.st{font-size:13px;font-weight:700;color:var(--n2);margin-bottom:12px;padding-bottom:7px;border-bottom:1.5px solid var(--g5);display:flex;align-items:center;gap:8px}
-.si{width:27px;height:27px;border-radius:7px;background:linear-gradient(135deg,var(--g3),var(--g2));display:flex;align-items:center;justify-content:center;color:#fff;font-size:11px;flex-shrink:0}
-.snum{display:inline-flex;width:20px;height:20px;border-radius:50%;background:var(--n2);color:#fff;font-size:9px;font-weight:700;align-items:center;justify-content:center;flex-shrink:0;font-family:'Poppins'}
+.st{font-size:13px;font-weight:700;color:var(--n2);margin-bottom:12px;padding-bottom:7px;border-bottom:1.5px solid var(--b6);display:flex;align-items:center;gap:8px}
+.si{width:27px;height:27px;border-radius:7px;background:linear-gradient(135deg,var(--b4),var(--b2));display:flex;align-items:center;justify-content:center;color:#fff;font-size:11px;flex-shrink:0;box-shadow:0 2px 6px rgba(37,99,235,0.25)}
+.sn{display:inline-flex;width:20px;height:20px;border-radius:50%;background:var(--b1);color:#fff;font-size:9px;font-weight:700;align-items:center;justify-content:center;flex-shrink:0;font-family:'Poppins'}
 .fg{margin-bottom:11px}.fg:last-child{margin-bottom:0}
 .fg label{display:block;font-weight:600;margin-bottom:4px;color:#374151;font-size:11.5px}
 .fg .rq{color:#ef4444;font-size:10px}
 .fg input,.fg select,.fg textarea{width:100%;padding:9px 11px;border:1.5px solid #e5e7eb;border-radius:8px;font-size:13px;font-family:inherit;transition:all .2s;background:#f9fafb;color:#333}
-.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--g2);outline:none;box-shadow:0 0 0 3px rgba(74,222,128,0.1);background:#fff}
+.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--b3);outline:none;box-shadow:0 0 0 3px rgba(59,130,246,0.1);background:#fff}
 .fg textarea{resize:vertical;min-height:72px;line-height:1.7}
 .fg input::placeholder,.fg textarea::placeholder{color:#adb5bd;font-size:11px}
 .fg select{cursor:pointer;appearance:auto}
@@ -47,91 +47,91 @@ body{font-family:'Noto Sans Myanmar','Padauk','Poppins',sans-serif;background:li
 .sgb{border:1.5px dashed #ced4da;border-radius:9px;padding:4px;background:#fefefe}
 .sgb canvas{display:block;width:100%;height:130px;border-radius:6px;cursor:crosshair;touch-action:none;background:#fff}
 .sga{margin-top:7px;display:flex;gap:7px}
-.bsg{padding:7px 14px;border:none;border-radius:7px;cursor:pointer;font-family:inherit;font-size:10.5px;font-weight:600;background:linear-gradient(135deg,#ef4444,#dc2626);color:#fff;display:flex;align-items:center;gap:4px;transition:all .2s}
-.bsg:hover{transform:translateY(-1px)}
+.bsg{padding:7px 14px;border:none;border-radius:7px;cursor:pointer;font-family:inherit;font-size:10.5px;font-weight:600;background:linear-gradient(135deg,#ef4444,#dc2626);color:#fff;display:flex;align-items:center;gap:4px}
 .sgi{font-size:9.5px;color:#9ca3af;margin-top:5px;display:flex;align-items:center;gap:3px}
 
 .pa{border:1.5px dashed #ced4da;border-radius:9px;padding:20px 12px;text-align:center;cursor:pointer;transition:all .3s;background:#f9fafb}
-.pa:hover{border-color:var(--g3);background:var(--g6)}
+.pa:hover{border-color:var(--b4);background:var(--b7)}
 .pa .pi{font-size:28px;color:#9ca3af;margin-bottom:4px}
 .pa .pt{font-size:12px;font-weight:600;color:#4b5563}
 .pa .ph{font-size:9.5px;color:#adb5bd;margin-top:2px}
 .pp{margin-top:8px;display:none;text-align:center}
-.pp img{width:85px;height:108px;border-radius:8px;object-fit:cover;border:2px solid var(--g2)}
-.pp .pc{font-size:9.5px;color:var(--g2);margin-top:4px;cursor:pointer;font-weight:600;display:flex;align-items:center;justify-content:center;gap:3px}
+.pp img{width:85px;height:108px;border-radius:8px;object-fit:cover;border:2px solid var(--b3)}
+.pp .pc{font-size:9.5px;color:var(--b3);margin-top:4px;cursor:pointer;font-weight:600;display:flex;align-items:center;justify-content:center;gap:3px}
 #phIn{display:none}
 
-.bg{width:100%;padding:13px;background:linear-gradient(135deg,var(--g2),var(--g1));color:#fff;border:none;border-radius:10px;font-size:15px;font-weight:700;cursor:pointer;font-family:inherit;box-shadow:0 4px 16px rgba(34,197,94,0.35);display:flex;align-items:center;justify-content:center;gap:7px;margin-top:3px;transition:all .3s}
-.bg:hover{transform:translateY(-2px);box-shadow:0 6px 22px rgba(34,197,94,0.45)}
+.bg{width:100%;padding:13px;background:linear-gradient(135deg,var(--b3),var(--b1));color:#fff;border:none;border-radius:10px;font-size:15px;font-weight:700;cursor:pointer;font-family:inherit;box-shadow:0 4px 16px rgba(37,99,235,0.35);display:flex;align-items:center;justify-content:center;gap:7px;margin-top:3px;transition:all .3s}
+.bg:hover{transform:translateY(-2px);box-shadow:0 6px 22px rgba(37,99,235,0.45)}
 .ff{text-align:center;color:rgba(255,255,255,0.25);margin-top:7px;font-size:9px}
 
-/* OUTPUT */
 .co{display:none;max-width:660px;margin:14px auto;padding:0 8px 36px}
 .ca{display:flex;gap:6px;margin-bottom:12px;justify-content:center;flex-wrap:wrap}
 .ba{padding:9px 16px;border:none;border-radius:8px;font-size:11.5px;font-weight:600;cursor:pointer;font-family:inherit;color:#fff;display:flex;align-items:center;gap:4px;transition:all .2s}
 .ba:hover{transform:translateY(-1px)}
-.bdl{background:linear-gradient(135deg,#3b82f6,#1d4ed8)}
+.bdl{background:linear-gradient(135deg,#3b82f6,#1d4ed8);box-shadow:var(--gl)}
 .bpr{background:linear-gradient(135deg,#8b5cf6,#6d28d9)}
 .bbk{background:linear-gradient(135deg,#64748b,#475569)}
 .cw{overflow-x:auto;-webkit-overflow-scrolling:touch;display:flex;justify-content:center}
 
-/* CV TEMPLATE A4 */
-#cvTpl{width:620px;height:877px;background:#fff;position:relative;overflow:hidden;box-shadow:0 6px 35px rgba(0,0,0,0.3);font-family:'Noto Sans Myanmar','Padauk','Poppins',sans-serif}
+/* ====== CV TEMPLATE ====== */
+#cvTpl{
+  width:620px;height:877px;background:#ffffff;
+  position:relative;overflow:hidden;
+  box-shadow:0 6px 35px rgba(0,0,0,0.3);
+  font-family:'Noto Serif Myanmar','Padauk','Poppins',serif;
+}
 .cv-deco{position:absolute;pointer-events:none}
-#wvTop{top:0;left:0;width:620px;height:60px;z-index:1}
-#wvBot{bottom:0;left:0;width:620px;height:50px;z-index:1}
-#mapBg{bottom:50px;right:5px;width:110px;height:210px;opacity:0.04;z-index:0}
-.cv-sa{position:absolute;top:60px;left:0;width:3px;height:767px;background:linear-gradient(180deg,var(--g2),var(--g1),var(--g3));z-index:2;opacity:0.4}
-.cv-cn{position:absolute;width:30px;height:30px;opacity:0.05;z-index:0}
-.cv-tl{top:0;left:0;border-top:2px solid var(--g1);border-left:2px solid var(--g1)}
-.cv-br{bottom:0;right:0;border-bottom:2px solid var(--g1);border-right:2px solid var(--g1)}
+#wvTop{top:0;left:0;width:620px;height:60px;z-index:2}
+#wvBot{bottom:0;left:0;width:620px;height:50px;z-index:2}
+#mapBg{bottom:55px;right:8px;width:110px;height:210px;opacity:0.04;z-index:0}
+#guilBg{top:0;left:0;width:620px;height:877px;z-index:0;opacity:1}
+.cv-sa{position:absolute;top:60px;left:0;width:3px;height:767px;background:linear-gradient(180deg,var(--b3),var(--b1),var(--b4));z-index:3;opacity:0.35}
+.cv-cn{position:absolute;width:30px;height:30px;opacity:0.08;z-index:1}
+.cv-tl{top:0;left:0;border-top:2px solid var(--b1);border-left:2px solid var(--b1)}
+.cv-br{bottom:0;right:0;border-bottom:2px solid var(--b1);border-right:2px solid var(--b1)}
 
-.cvb{position:relative;z-index:2;padding:0}
+.cvb{position:relative;z-index:4;padding:0;display:flex;flex-direction:column;height:877px}
 
-.cvH{text-align:center;padding-top:16px;padding-bottom:1px}
+/* Text shadow for all CV text */
+.cvb *{text-shadow:0 0.5px 1.5px rgba(30,58,138,0.18)}
+
+/* HEADER */
+.cvH{text-align:center;padding-top:18px;padding-bottom:2px;flex-shrink:0}
 .cvLR{display:flex;align-items:center;justify-content:center;gap:5px;margin-bottom:1px}
-.cvLC{width:18px;height:18px;border-radius:50%;background:linear-gradient(135deg,var(--g2),var(--g1));display:flex;align-items:center;justify-content:center;overflow:hidden;flex-shrink:0}
+.cvLC{width:20px;height:20px;border-radius:50%;background:linear-gradient(135deg,var(--b3),var(--b1));display:flex;align-items:center;justify-content:center;overflow:hidden;flex-shrink:0;box-shadow:0 1px 4px rgba(37,99,235,0.3)}
 .cvLC img{width:100%;height:100%;object-fit:cover;border-radius:50%}
 .cvLC span{color:#fff;font-weight:800;font-size:7px;font-family:'Poppins'}
-.cvSN{font-family:'Poppins';font-size:7.5px;font-weight:700;color:var(--g1)}
-.cvMT{font-size:12px;font-weight:800;color:var(--n2);margin-top:1px;letter-spacing:1.5px}
-.cvST{font-family:'Poppins';font-size:6.5px;color:#adb5bd;letter-spacing:3px;margin-top:0}
-.cvDV{width:45px;height:1.5px;background:linear-gradient(90deg,transparent,var(--g2),transparent);margin:3px auto 0}
+.cvSN{font-family:'Poppins';font-size:8px;font-weight:700;color:var(--b1)}
+.cvMT{font-size:15px;font-weight:900;color:var(--n2);margin-top:1px;letter-spacing:1.5px;text-shadow:0 1px 3px rgba(30,58,138,0.2)}
+.cvST{font-family:'Poppins';font-size:7px;color:#94a3b8;letter-spacing:3.5px;margin-top:0;font-weight:500}
+.cvDV{width:60px;height:2px;background:linear-gradient(90deg,transparent,var(--b3),transparent);margin:4px auto 0;box-shadow:0 0 8px rgba(59,130,246,0.3)}
 
-/* Profile Top */
-.cvPT{display:flex;gap:12px;margin:6px 18px;padding:9px;background:linear-gradient(135deg,var(--g6),#f8fafc);border-radius:8px;border:1px solid #e9ecef;border-left:3px solid var(--g2);align-items:flex-start}
-.cvPH{width:88px;height:112px;border-radius:8px;overflow:hidden;border:2px solid var(--g2);flex-shrink:0;background:#f1f3f5;box-shadow:0 2px 6px rgba(0,0,0,0.06)}
-.cvPH img{display:block;width:88px;height:112px;object-fit:cover}
-.cvPI{flex:1;font-size:0}
-.cvNM{font-size:13px;font-weight:800;color:var(--n2);line-height:1.3;margin-bottom:1px}
-.cvPO{font-size:8px;color:var(--g1);font-weight:700;margin-bottom:5px}
-.cvRI{display:flex;align-items:flex-start;gap:4px;margin-bottom:2.5px;font-size:7.5px;color:#495057;line-height:1.4}
-.cvRI b{color:var(--n2);font-weight:700;min-width:55px;flex-shrink:0}
-.cvRI span{flex:1}
+/* PROFILE */
+.cvPT{display:flex;gap:14px;margin:8px 20px;padding:12px;background:linear-gradient(135deg,var(--b7),#f8fafc);border-radius:10px;border:1px solid #e2e8f0;border-left:3px solid var(--b3);flex-shrink:0;box-shadow:0 1px 6px rgba(30,58,138,0.06)}
+.cvPH{width:92px;height:118px;border-radius:9px;overflow:hidden;border:2.5px solid var(--b3);flex-shrink:0;background:#f1f3f5;box-shadow:0 2px 8px rgba(30,58,138,0.12)}
+.cvPH img{display:block;width:92px;height:118px;object-fit:cover}
+.cvPI{flex:1}
+.cvNM{font-size:17px;font-weight:900;color:var(--n2);line-height:1.3;margin-bottom:2px;text-shadow:0 1px 3px rgba(30,58,138,0.2)}
+.cvPO{font-size:10.5px;color:var(--b1);font-weight:700;margin-bottom:7px;text-shadow:0 0.5px 2px rgba(30,58,138,0.15)}
+.cvRI{display:flex;align-items:flex-start;gap:5px;margin-bottom:3.5px;font-size:9px;color:#475569;line-height:1.45}
+.cvRI b{color:var(--n2);font-weight:700;min-width:52px;flex-shrink:0}
 
-/* 3 Column Layout */
-.cv3C{display:flex;gap:8px;margin:5px 18px 0}
-.cv3A{flex:1;min-width:0}
-.cv3B{flex:1;min-width:0}
-.cv3D{flex:1;min-width:0}
+/* 3 COL */
+.cv3C{display:flex;gap:10px;margin:6px 20px 0;flex:1;min-height:0}
+.cv3A,.cv3B,.cv3D{flex:1;min-width:0;display:flex;flex-direction:column}
 
-/* Section */
-.cvS{margin-bottom:4px}
-.cvSH{font-size:8px;font-weight:700;color:var(--n2);padding:3.5px 7px;background:linear-gradient(90deg,var(--g5),rgba(220,252,231,0.15));border-left:2.5px solid var(--g2);border-radius:0 5px 5px 0;margin-bottom:2px;display:flex;align-items:center;gap:3px}
-.cvSH span.shI{display:inline-flex;width:12px;height:12px;border-radius:3px;background:var(--g1);align-items:center;justify-content:center;color:#fff;font-size:6px}
-.cvSB{padding:1px 7px;font-size:7.5px;line-height:1.75;color:#495057;white-space:pre-line;word-wrap:break-word}
+.cvS{margin-bottom:6px}
+.cvSH{font-size:10.5px;font-weight:700;color:var(--n2);padding:5px 9px;background:linear-gradient(90deg,var(--b6),rgba(219,234,254,0.15));border-left:3px solid var(--b3);border-radius:0 6px 6px 0;margin-bottom:3px;display:flex;align-items:center;gap:4px;box-shadow:0 1px 3px rgba(30,58,138,0.06);text-shadow:0 0.5px 2px rgba(30,58,138,0.15)}
+.cvSH span.shI{display:inline-flex;width:14px;height:14px;border-radius:3px;background:linear-gradient(135deg,var(--b3),var(--b1));align-items:center;justify-content:center;color:#fff;font-size:7px;box-shadow:0 1px 3px rgba(37,99,235,0.3)}
+.cvSB{padding:2px 9px;font-size:9.5px;line-height:1.9;color:#475569;white-space:pre-line;word-wrap:break-word}
+.cvIR{display:flex;align-items:flex-start;gap:4px;margin-bottom:3px;font-size:9px;color:#475569;line-height:1.45;padding:0 9px}
+.cvIR b{color:var(--n2);font-weight:700;white-space:nowrap}
 
-/* Info Row */
-.cvIR{display:flex;align-items:flex-start;gap:3px;margin-bottom:2px;font-size:7.5px;color:#495057;line-height:1.4;padding:0 7px}
-.cvIR b{color:var(--n2);font-weight:700;min-width:auto;white-space:nowrap}
+.cvSG{flex-shrink:0;margin:0 20px;padding:6px 8px 0;text-align:right}
+.cvSG img{max-width:110px;max-height:42px;display:block;margin-left:auto}
+.cvSG .sl{width:130px;border-top:1px solid #94a3b8;margin-left:auto;margin-top:2px;padding-top:2px;font-size:7.5px;color:#64748b;text-align:center}
 
-/* Signature */
-.cvSG{margin:8px 18px 0;display:flex;justify-content:flex-end;align-items:flex-end;gap:20px}
-.cvSG .sg-block{text-align:center}
-.cvSG img{max-width:100px;max-height:38px;display:block;margin:0 auto}
-.cvSG .sl{width:120px;border-top:1px solid #adb5bd;margin-top:2px;padding-top:1.5px;font-size:6.5px;color:#868e96;text-align:center}
-
-.cvFB{position:absolute;bottom:5px;left:18px;right:18px;display:flex;justify-content:space-between;font-size:5.5px;color:#ced4da;z-index:3}
+.cvFB{flex-shrink:0;padding:0 20px;display:flex;justify-content:space-between;font-size:6px;color:#cbd5e1;height:18px;align-items:flex-end;padding-bottom:5px}
 
 @media(max-width:640px){.cw #cvTpl{transform-origin:top left;transform:scale(calc((100vw - 20px)/620))}}
 @media print{body{background:#fff!important}.hdr,.ca,.fcon{display:none!important}.co{display:block!important;padding:0!important;margin:0!important}#cvTpl{box-shadow:none!important;transform:none!important}}
@@ -153,88 +153,73 @@ body{font-family:'Noto Sans Myanmar','Padauk','Poppins',sans-serif;background:li
 
 <div class="fcon" id="fCon">
 
-<!-- 1 -->
-<div class="fs"><div class="st"><span class="snum">1</span><div class="si"><i class="fa-solid fa-user"></i></div>အမည်</div>
+<div class="fs"><div class="st"><span class="sn">1</span><div class="si"><i class="fa-solid fa-user"></i></div>အမည်</div>
 <div class="fg"><label>အမည် အပြည့်အစုံ <span class="rq">*</span></label>
 <input type="text" id="f1" placeholder="ဥပမာ - ကိုမင်းမင်း"></div></div>
 
-<!-- 2 -->
-<div class="fs"><div class="st"><span class="snum">2</span><div class="si"><i class="fa-solid fa-id-card"></i></div>မှတ်ပုံတင်</div>
+<div class="fs"><div class="st"><span class="sn">2</span><div class="si"><i class="fa-solid fa-id-card"></i></div>မှတ်ပုံတင်</div>
 <div class="fg"><label>နိုင်ငံသားစိစစ်ရေးကတ်ပြားအမှတ် <span class="rq">*</span></label>
 <input type="text" id="f2" placeholder="ဥပမာ - ၁၂/အစန(နိုင်)၁၂၃၄၅၆"></div></div>
 
-<!-- 3 -->
-<div class="fs"><div class="st"><span class="snum">3</span><div class="si"><i class="fa-solid fa-calendar-days"></i></div>မွေးသက္ကရာဇ်</div>
+<div class="fs"><div class="st"><span class="sn">3</span><div class="si"><i class="fa-solid fa-calendar-days"></i></div>မွေးသက္ကရာဇ်</div>
 <div class="fg"><label>မွေးသက္ကရာဇ်</label>
-<input type="text" id="f3" placeholder="ဥပမာ - ၁၉၉၅ ခုနှစ် ဇန်နဝါရီ ၁ ရက်"></div></div>
+<input type="text" id="f3" placeholder="ဥပမာ - ၁၉၉၅ ဇန်နဝါရီ ၁ ရက်"></div></div>
 
-<!-- 4 & 5 -->
-<div class="fs"><div class="st"><span class="snum">4</span><div class="si"><i class="fa-solid fa-people-roof"></i></div>မိဘအမည်</div>
+<div class="fs"><div class="st"><span class="sn">4</span><div class="si"><i class="fa-solid fa-people-roof"></i></div>မိဘအမည်</div>
 <div class="fg2">
 <div class="fg"><label>အဖအမည်</label><input type="text" id="f4" placeholder="ဦးထွန်းထွန်း"></div>
 <div class="fg"><label>အမိအမည်</label><input type="text" id="f5" placeholder="ဒေါ်မြမြ"></div>
 </div></div>
 
-<!-- 6 & 7 -->
-<div class="fs"><div class="st"><span class="snum">5</span><div class="si"><i class="fa-solid fa-globe"></i></div>လူမျိုး / ဘာသာ</div>
+<div class="fs"><div class="st"><span class="sn">5</span><div class="si"><i class="fa-solid fa-globe"></i></div>လူမျိုး / ဘာသာ</div>
 <div class="fg2">
 <div class="fg"><label>လူမျိုး</label><input type="text" id="f6" placeholder="ဗမာ"></div>
 <div class="fg"><label>ကိုးကွယ်သည့်ဘာသာ</label><input type="text" id="f7" placeholder="ဗုဒ္ဓဘာသာ"></div>
 </div></div>
 
-<!-- 8 & 9 -->
-<div class="fs"><div class="st"><span class="snum">6</span><div class="si"><i class="fa-solid fa-venus-mars"></i></div>ကျား/မ နှင့် အိမ်ထောင်</div>
+<div class="fs"><div class="st"><span class="sn">6</span><div class="si"><i class="fa-solid fa-venus-mars"></i></div>ကျား/မ နှင့် အိမ်ထောင်</div>
 <div class="fg2">
 <div class="fg"><label>ကျား/မ</label>
-<select id="f9"><option value="">ရွေးချယ်ပါ</option><option value="ကျား">ကျား</option><option value="မ">မ</option></select></div>
+<select id="f9"><option value="">ရွေးချယ်ပါ</option><option>ကျား</option><option>မ</option></select></div>
 <div class="fg"><label>အိမ်ထောင်ရှိ/မရှိ</label>
-<select id="f8"><option value="">ရွေးချယ်ပါ</option><option value="ရှိ">ရှိ</option><option value="မရှိ">မရှိ</option></select></div>
+<select id="f8"><option value="">ရွေးချယ်ပါ</option><option>ရှိ</option><option>မရှိ</option></select></div>
 </div></div>
 
-<!-- 10 -->
-<div class="fs"><div class="st"><span class="snum">7</span><div class="si"><i class="fa-solid fa-graduation-cap"></i></div>ပညာအရည်အချင်း</div>
+<div class="fs"><div class="st"><span class="sn">7</span><div class="si"><i class="fa-solid fa-graduation-cap"></i></div>ပညာအရည်အချင်း</div>
 <div class="fg"><label>ပညာအရည်အချင်း</label>
 <textarea id="f10" rows="3" placeholder="B.Sc (Computer Science)&#10;ရန်ကုန်တက္ကသိုလ် (၂၀၁၈)"></textarea></div></div>
 
-<!-- 11 -->
-<div class="fs"><div class="st"><span class="snum">8</span><div class="si"><i class="fa-solid fa-briefcase"></i></div>လုပ်ငန်းအတွေ့အကြုံ</div>
+<div class="fs"><div class="st"><span class="sn">8</span><div class="si"><i class="fa-solid fa-briefcase"></i></div>လုပ်ငန်းအတွေ့အကြုံ</div>
 <div class="fg"><label>လုပ်ငန်းအတွေ့အကြုံ</label>
 <textarea id="f11" rows="3" placeholder="ABC ကုမ္ပဏီ - Manager (၂၀၂၀-၂၀၂၃)&#10;XYZ ကုမ္ပဏီ - Staff (၂၀၁၈-၂၀၂၀)"></textarea></div></div>
 
-<!-- 12 & 13 -->
-<div class="fs"><div class="st"><span class="snum">9</span><div class="si"><i class="fa-solid fa-ruler-vertical"></i></div>အရပ်အမြင့် / လစာ</div>
+<div class="fs"><div class="st"><span class="sn">9</span><div class="si"><i class="fa-solid fa-ruler-vertical"></i></div>အရပ်အမြင့် / လစာ</div>
 <div class="fg2">
-<div class="fg"><label>အရပ်အမြင့်</label><input type="text" id="f12" placeholder="၅ ပေ ၇ လက်မ"></div>
+<div class="fg"><label>အရပ်အမြင့်</label><input type="text" id="f12" placeholder="၅ပေ ၇လက်မ"></div>
 <div class="fg"><label>မျှော်မှန်းလစာ</label><input type="text" id="f13" placeholder="၅၀၀,၀၀၀ ကျပ်"></div>
 </div></div>
 
-<!-- 14 -->
-<div class="fs"><div class="st"><span class="snum">10</span><div class="si"><i class="fa-solid fa-bullseye"></i></div>လျှောက်ထားလိုသည့်ရာထူး</div>
-<div class="fg"><label>ရာထူး <span class="rq">*</span></label>
-<input type="text" id="f14" placeholder="ဥပမာ - Senior Sales Manager"></div></div>
+<div class="fs"><div class="st"><span class="sn">10</span><div class="si"><i class="fa-solid fa-bullseye"></i></div>ရာထူး</div>
+<div class="fg"><label>လျှောက်ထားလိုသည့်ရာထူး <span class="rq">*</span></label>
+<input type="text" id="f14" placeholder="Senior Sales Manager"></div></div>
 
-<!-- 15 -->
-<div class="fs"><div class="st"><span class="snum">11</span><div class="si"><i class="fa-solid fa-map-location-dot"></i></div>နယ်တာဝန်ထမ်းဆောင်နိုင်ခြင်း</div>
+<div class="fs"><div class="st"><span class="sn">11</span><div class="si"><i class="fa-solid fa-map-location-dot"></i></div>နယ်တာဝန်</div>
 <div class="fg"><label>နယ်များတွင် တာဝန်ထမ်းဆောင်နိုင်ခြင်း</label>
-<select id="f15"><option value="">ရွေးချယ်ပါ</option><option value="ထမ်းဆောင်နိုင်ပါသည်">ထမ်းဆောင်နိုင်ပါသည်</option><option value="မထမ်းဆောင်နိုင်ပါ">မထမ်းဆောင်နိုင်ပါ</option></select></div></div>
+<select id="f15"><option value="">ရွေးချယ်ပါ</option><option>ထမ်းဆောင်နိုင်ပါသည်</option><option>မထမ်းဆောင်နိုင်ပါ</option></select></div></div>
 
-<!-- 16 -->
-<div class="fs"><div class="st"><span class="snum">12</span><div class="si"><i class="fa-solid fa-location-dot"></i></div>နေရပ်လိပ်စာ</div>
+<div class="fs"><div class="st"><span class="sn">12</span><div class="si"><i class="fa-solid fa-location-dot"></i></div>လိပ်စာ</div>
 <div class="fg"><label>နေရပ်လိပ်စာ</label>
 <textarea id="f16" rows="2" placeholder="အမှတ်(၁၂၃)၊ လှိုင်မြို့နယ်၊ ရန်ကုန်"></textarea></div></div>
 
-<!-- 17 -->
-<div class="fs"><div class="st"><span class="snum">13</span><div class="si"><i class="fa-solid fa-phone"></i></div>ဖုန်းနံပါတ်</div>
-<div class="fg"><label>ဆက်သွယ်ရန် ဖုန်းနံပါတ် <span class="rq">*</span></label>
+<div class="fs"><div class="st"><span class="sn">13</span><div class="si"><i class="fa-solid fa-phone"></i></div>ဖုန်းနံပါတ်</div>
+<div class="fg"><label>ဖုန်းနံပါတ် <span class="rq">*</span></label>
 <input type="tel" id="f17" placeholder="09-xxx-xxx-xxx"></div></div>
 
-<!-- 18 -->
-<div class="fs"><div class="st"><span class="snum">14</span><div class="si"><i class="fa-solid fa-screwdriver-wrench"></i></div>ကျွမ်းကျင်မှု</div>
+<div class="fs"><div class="st"><span class="sn">14</span><div class="si"><i class="fa-solid fa-screwdriver-wrench"></i></div>ကျွမ်းကျင်မှု</div>
 <div class="fg"><label>ကျွမ်းကျင်မှု</label>
 <textarea id="f18" rows="3" placeholder="Microsoft Office&#10;Photoshop&#10;AutoCAD"></textarea></div></div>
 
-<!-- SIGNATURE -->
-<div class="fs"><div class="st"><span class="snum">15</span><div class="si"><i class="fa-solid fa-signature"></i></div>လက်မှတ်ထိုးရန်</div>
+<div class="fs"><div class="st"><span class="sn">15</span><div class="si"><i class="fa-solid fa-signature"></i></div>လက်မှတ်ထိုးရန်</div>
 <div class="fg">
 <label>ဘောင်ထဲတွင် လက်မှတ်ထိုးပါ</label>
 <div class="sgb"><canvas id="sgC"></canvas></div>
@@ -242,8 +227,7 @@ body{font-family:'Noto Sans Myanmar','Padauk','Poppins',sans-serif;background:li
 <div class="sgi"><i class="fa-solid fa-circle-info"></i> မကြိုက်ပါက ဖျက်ပြီး ပြန်ထိုးနိုင်ပါသည်</div>
 </div></div>
 
-<!-- PHOTO -->
-<div class="fs"><div class="st"><span class="snum">16</span><div class="si"><i class="fa-solid fa-camera"></i></div>ဓာတ်ပုံတင်ရန်</div>
+<div class="fs"><div class="st"><span class="sn">16</span><div class="si"><i class="fa-solid fa-camera"></i></div>ဓာတ်ပုံတင်ရန်</div>
 <div class="fg">
 <label>ဓာတ်ပုံ <span class="rq">*</span></label>
 <div class="pa" id="pA" onclick="document.getElementById('phIn').click()">
@@ -256,10 +240,10 @@ body{font-family:'Noto Sans Myanmar','Padauk','Poppins',sans-serif;background:li
 </div></div>
 
 <button class="bg" onclick="genCV()" type="button"><i class="fa-solid fa-wand-magic-sparkles"></i> CV ဖောင် ဖန်တီးမည်</button>
-<div class="ff">A4 UHD 300DPI PNG ထွက်ပါမည်</div>
+<div class="ff">A4 UHD 300DPI PNG</div>
 </div>
 
-<!-- ===== CV OUTPUT ===== -->
+<!-- CV OUTPUT -->
 <div class="co" id="cvOut">
 <div class="ca">
 <button class="ba bdl" onclick="dlCV()"><i class="fa-solid fa-download"></i> UHD PNG Download</button>
@@ -269,6 +253,7 @@ body{font-family:'Noto Sans Myanmar','Padauk','Poppins',sans-serif;background:li
 <div class="cw">
 <div id="cvTpl">
 
+<img id="guilBg" class="cv-deco" src="" alt="">
 <img id="wvTop" class="cv-deco" src="" alt="">
 <img id="wvBot" class="cv-deco" src="" alt="">
 <img id="mapBg" class="cv-deco" src="" alt="">
@@ -278,7 +263,6 @@ body{font-family:'Noto Sans Myanmar','Padauk','Poppins',sans-serif;background:li
 
 <div class="cvb">
 
-<!-- HEADER -->
 <div class="cvH">
 <div class="cvLR">
 <div class="cvLC">
@@ -292,38 +276,32 @@ body{font-family:'Noto Sans Myanmar','Padauk','Poppins',sans-serif;background:li
 <div class="cvDV"></div>
 </div>
 
-<!-- PROFILE TOP -->
 <div class="cvPT">
 <div class="cvPH"><img id="cvPhoto" src="" alt=""></div>
 <div class="cvPI">
 <div class="cvNM" id="cvNm"></div>
 <div class="cvPO" id="cvPos"></div>
-<div class="cvRI"><b>&#9742; ဖုန်း</b><span id="cvPh"></span></div>
-<div class="cvRI"><b>&#9873; လိပ်စာ</b><span id="cvAd"></span></div>
-<div class="cvRI"><b>&#9733; လစာ</b><span id="cvSl"></span></div>
+<div class="cvRI"><b>&#9742; ဖုန်း -</b><span id="cvPh"></span></div>
+<div class="cvRI"><b>&#9873; လိပ်စာ -</b><span id="cvAd"></span></div>
+<div class="cvRI"><b>&#9733; လစာ -</b><span id="cvSl"></span></div>
 </div>
 </div>
 
-<!-- 3 COLUMNS -->
 <div class="cv3C">
-
-<!-- COL 1: ကိုယ်ရေးကိုယ်တာ -->
 <div class="cv3A">
 <div class="cvS">
 <div class="cvSH"><span class="shI">&#9632;</span> ကိုယ်ရေးကိုယ်တာ</div>
-<div class="cvIR"><b>မှတ်ပုံတင် -</b> <span id="cvNrc"></span></div>
-<div class="cvIR"><b>မွေးနေ့ -</b> <span id="cvDob"></span></div>
-<div class="cvIR"><b>ကျား/မ -</b> <span id="cvGd"></span></div>
-<div class="cvIR"><b>အဖ -</b> <span id="cvFa"></span></div>
-<div class="cvIR"><b>အမိ -</b> <span id="cvMo"></span></div>
-<div class="cvIR"><b>လူမျိုး -</b> <span id="cvEt"></span></div>
-<div class="cvIR"><b>ဘာသာ -</b> <span id="cvRl"></span></div>
-<div class="cvIR"><b>အိမ်ထောင် -</b> <span id="cvMr"></span></div>
-<div class="cvIR"><b>အရပ် -</b> <span id="cvHt"></span></div>
+<div class="cvIR"><b>မှတ်ပုံတင် -</b><span id="cvNrc"></span></div>
+<div class="cvIR"><b>မွေးနေ့ -</b><span id="cvDob"></span></div>
+<div class="cvIR"><b>ကျား/မ -</b><span id="cvGd"></span></div>
+<div class="cvIR"><b>အဖ -</b><span id="cvFa"></span></div>
+<div class="cvIR"><b>အမိ -</b><span id="cvMo"></span></div>
+<div class="cvIR"><b>လူမျိုး -</b><span id="cvEt"></span></div>
+<div class="cvIR"><b>ဘာသာ -</b><span id="cvRl"></span></div>
+<div class="cvIR"><b>အိမ်ထောင် -</b><span id="cvMr"></span></div>
+<div class="cvIR"><b>အရပ် -</b><span id="cvHt"></span></div>
 </div>
 </div>
-
-<!-- COL 2: ပညာရေး + ကျွမ်းကျင်မှု -->
 <div class="cv3B">
 <div class="cvS">
 <div class="cvSH"><span class="shI">&#9632;</span> ပညာအရည်အချင်း</div>
@@ -334,8 +312,6 @@ body{font-family:'Noto Sans Myanmar','Padauk','Poppins',sans-serif;background:li
 <div class="cvSB" id="cvSk"></div>
 </div>
 </div>
-
-<!-- COL 3: အတွေ့အကြုံ -->
 <div class="cv3D">
 <div class="cvS">
 <div class="cvSH"><span class="shI">&#9632;</span> လုပ်ငန်းအတွေ့အကြုံ</div>
@@ -343,72 +319,178 @@ body{font-family:'Noto Sans Myanmar','Padauk','Poppins',sans-serif;background:li
 </div>
 <div class="cvS">
 <div class="cvSH"><span class="shI">&#9632;</span> ရာထူး / နယ်တာဝန်</div>
-<div class="cvIR"><b>ရာထူး -</b> <span id="cvPD"></span></div>
-<div class="cvIR"><b>နယ် -</b> <span id="cvRu"></span></div>
+<div class="cvIR"><b>ရာထူး -</b><span id="cvPD"></span></div>
+<div class="cvIR"><b>နယ် -</b><span id="cvRu"></span></div>
+</div>
 </div>
 </div>
 
-</div><!-- /cv3C -->
-
-<!-- SIGNATURE -->
 <div class="cvSG">
-<div class="sg-block">
 <img id="cvSg" src="" alt="">
 <div class="sl">လက်မှတ်</div>
 </div>
-</div>
-
-</div><!-- /cvb -->
 
 <div class="cvFB">
 <span>&#9670; Generated by MyanmarCV Builder</span>
 <span id="cvDt"></span>
 </div>
 
-</div><!-- /cvTpl -->
+</div>
+</div>
 </div>
 </div>
 
 <script>
-/* CANVAS DECORATIONS */
+/* =========== GUILLOCHE PATTERN GENERATOR =========== */
+function drawSpirograph(ctx,cx,cy,R,r,d,color,lw,alpha){
+  ctx.beginPath();
+  ctx.strokeStyle=color;
+  ctx.lineWidth=lw;
+  ctx.globalAlpha=alpha;
+  var t,x,y,dt=Math.PI/180;
+  for(var i=0;i<=360*Math.ceil(r/gcd(R,r));i++){
+    t=i*dt;
+    x=cx+(R-r)*Math.cos(t)+d*Math.cos((R-r)*t/r);
+    y=cy+(R-r)*Math.sin(t)+d*Math.sin((R-r)*t/r);
+    if(i===0)ctx.moveTo(x,y);else ctx.lineTo(x,y);
+  }
+  ctx.stroke();ctx.globalAlpha=1;
+}
+function gcd(a,b){return b?gcd(b,a%b):a}
+
+function drawRosette(ctx,cx,cy,size,color,alpha){
+  var params=[
+    [size,size*0.42,size*0.35,0.3],
+    [size*0.85,size*0.3,size*0.28,0.25],
+    [size*0.7,size*0.55,size*0.22,0.2],
+    [size*0.5,size*0.35,size*0.18,0.15],
+    [size*0.35,size*0.2,size*0.12,0.12]
+  ];
+  for(var i=0;i<params.length;i++){
+    drawSpirograph(ctx,cx,cy,params[i][0],params[i][1],params[i][2],color,0.4,params[i][3]*alpha);
+  }
+  // concentric circles
+  ctx.globalAlpha=0.06*alpha;ctx.strokeStyle=color;ctx.lineWidth=0.3;
+  for(var r=8;r<size;r+=6){ctx.beginPath();ctx.arc(cx,cy,r,0,Math.PI*2);ctx.stroke()}
+  ctx.globalAlpha=1;
+}
+
+function drawWavyBorder(ctx,w,h,color,alpha){
+  ctx.globalAlpha=alpha;ctx.strokeStyle=color;ctx.lineWidth=0.4;
+  var m=12;
+  // Top border wavy line
+  for(var j=0;j<3;j++){
+    ctx.beginPath();
+    for(var i=0;i<w;i++){
+      var y=m+j*3+Math.sin(i*0.05+j)*2;
+      if(i===0)ctx.moveTo(i,y);else ctx.lineTo(i,y);
+    }ctx.stroke();
+  }
+  // Bottom
+  for(var j=0;j<3;j++){
+    ctx.beginPath();
+    for(var i=0;i<w;i++){
+      var y=h-m-j*3+Math.sin(i*0.05+j)*2;
+      if(i===0)ctx.moveTo(i,y);else ctx.lineTo(i,y);
+    }ctx.stroke();
+  }
+  // Left
+  for(var j=0;j<3;j++){
+    ctx.beginPath();
+    for(var i=0;i<h;i++){
+      var x=m+j*3+Math.sin(i*0.05+j)*2;
+      if(i===0)ctx.moveTo(x,i);else ctx.lineTo(x,i);
+    }ctx.stroke();
+  }
+  // Right
+  for(var j=0;j<3;j++){
+    ctx.beginPath();
+    for(var i=0;i<h;i++){
+      var x=w-m-j*3+Math.sin(i*0.05+j)*2;
+      if(i===0)ctx.moveTo(x,i);else ctx.lineTo(x,i);
+    }ctx.stroke();
+  }
+  ctx.globalAlpha=1;
+}
+
+function genGuillocheBg(w,h){
+  var c=document.createElement('canvas');c.width=w*2;c.height=h*2;
+  var x=c.getContext('2d');x.scale(2,2);
+  var col='#1e3a8a';
+  // Corner rosettes
+  drawRosette(x,55,55,50,col,0.6);
+  drawRosette(x,w-55,h-55,50,col,0.6);
+  drawRosette(x,w-55,55,30,col,0.35);
+  drawRosette(x,55,h-55,30,col,0.35);
+  // Center large rosette
+  drawRosette(x,w/2,h/2,140,col,0.22);
+  // Wavy border
+  drawWavyBorder(x,w,h,col,0.08);
+  // Fine diagonal hatching (banknote texture)
+  x.globalAlpha=0.018;x.strokeStyle=col;x.lineWidth=0.3;
+  for(var i=-h;i<w;i+=8){x.beginPath();x.moveTo(i,0);x.lineTo(i+h,h);x.stroke()}
+  x.globalAlpha=1;
+  return c.toDataURL('image/png');
+}
+
 function genWaveTop(w,h){
   var c=document.createElement('canvas');c.width=w*2;c.height=h*2;
   var x=c.getContext('2d');x.scale(2,2);
+  // Glow layer
+  var gg=x.createLinearGradient(0,0,w,0);
+  gg.addColorStop(0,'rgba(30,58,138,0.06)');gg.addColorStop(0.5,'rgba(59,130,246,0.04)');gg.addColorStop(1,'rgba(147,197,253,0.02)');
+  x.fillStyle=gg;x.fillRect(0,0,w,h);
+  // Wave 1
   var g1=x.createLinearGradient(0,0,w,0);
-  g1.addColorStop(0,'rgba(22,101,52,0.82)');g1.addColorStop(0.4,'rgba(34,197,94,0.55)');g1.addColorStop(0.7,'rgba(74,222,128,0.35)');g1.addColorStop(1,'rgba(134,239,172,0.18)');
-  x.fillStyle=g1;x.beginPath();x.moveTo(0,0);x.lineTo(w,0);x.lineTo(w,h*0.48);
-  x.bezierCurveTo(w*0.82,h*0.88,w*0.65,h*0.35,w*0.45,h*0.72);
-  x.bezierCurveTo(w*0.3,h*0.95,w*0.12,h*0.55,0,h*0.68);x.closePath();x.fill();
+  g1.addColorStop(0,'rgba(30,58,138,0.82)');g1.addColorStop(0.35,'rgba(37,99,235,0.6)');g1.addColorStop(0.65,'rgba(59,130,246,0.4)');g1.addColorStop(1,'rgba(147,197,253,0.2)');
+  x.fillStyle=g1;x.beginPath();x.moveTo(0,0);x.lineTo(w,0);x.lineTo(w,h*0.45);
+  x.bezierCurveTo(w*0.8,h*0.85,w*0.6,h*0.3,w*0.4,h*0.7);
+  x.bezierCurveTo(w*0.25,h*0.95,w*0.1,h*0.5,0,h*0.65);x.closePath();x.fill();
+  // Wave 2
   var g2=x.createLinearGradient(0,0,w,0);
-  g2.addColorStop(0,'rgba(20,83,45,0.38)');g2.addColorStop(0.5,'rgba(34,197,94,0.2)');g2.addColorStop(1,'rgba(74,222,128,0.08)');
-  x.fillStyle=g2;x.beginPath();x.moveTo(0,0);x.lineTo(w,0);x.lineTo(w,h*0.32);
-  x.bezierCurveTo(w*0.78,h*0.62,w*0.55,h*0.22,w*0.35,h*0.52);
-  x.bezierCurveTo(w*0.2,h*0.68,w*0.08,h*0.42,0,h*0.48);x.closePath();x.fill();
-  x.fillStyle='rgba(187,247,208,0.12)';x.beginPath();x.moveTo(0,0);x.lineTo(w,0);x.lineTo(w,h*0.18);
-  x.bezierCurveTo(w*0.7,h*0.38,w*0.4,h*0.1,w*0.15,h*0.3);
-  x.bezierCurveTo(w*0.06,h*0.38,0,h*0.22,0,h*0.28);x.closePath();x.fill();
+  g2.addColorStop(0,'rgba(30,64,175,0.4)');g2.addColorStop(0.5,'rgba(96,165,250,0.22)');g2.addColorStop(1,'rgba(147,197,253,0.08)');
+  x.fillStyle=g2;x.beginPath();x.moveTo(0,0);x.lineTo(w,0);x.lineTo(w,h*0.3);
+  x.bezierCurveTo(w*0.75,h*0.55,w*0.5,h*0.18,w*0.3,h*0.48);
+  x.bezierCurveTo(w*0.15,h*0.65,w*0.06,h*0.38,0,h*0.45);x.closePath();x.fill();
+  // Wave 3 shimmer
+  x.fillStyle='rgba(219,234,254,0.14)';x.beginPath();x.moveTo(0,0);x.lineTo(w,0);
+  x.lineTo(w,h*0.15);x.bezierCurveTo(w*0.65,h*0.32,w*0.35,h*0.08,0,h*0.25);x.closePath();x.fill();
+  // Glow line
+  x.strokeStyle='rgba(147,197,253,0.35)';x.lineWidth=1;x.shadowColor='rgba(59,130,246,0.4)';x.shadowBlur=6;
+  x.beginPath();x.moveTo(0,h*0.65);
+  x.bezierCurveTo(w*0.1,h*0.5,w*0.25,h*0.9,w*0.4,h*0.68);
+  x.bezierCurveTo(w*0.6,h*0.3,w*0.8,h*0.82,w,h*0.45);x.stroke();
+  x.shadowBlur=0;
   return c.toDataURL('image/png');
 }
+
 function genWaveBot(w,h){
   var c=document.createElement('canvas');c.width=w*2;c.height=h*2;
   var x=c.getContext('2d');x.scale(2,2);
   var g1=x.createLinearGradient(0,0,w,0);
-  g1.addColorStop(0,'rgba(22,101,52,0.78)');g1.addColorStop(0.4,'rgba(34,197,94,0.5)');g1.addColorStop(0.7,'rgba(74,222,128,0.3)');g1.addColorStop(1,'rgba(134,239,172,0.15)');
-  x.fillStyle=g1;x.beginPath();x.moveTo(0,h*0.45);
-  x.bezierCurveTo(w*0.1,h*0.15,w*0.25,h*0.55,w*0.42,h*0.28);
-  x.bezierCurveTo(w*0.58,h*0.05,w*0.78,h*0.48,w,h*0.35);
+  g1.addColorStop(0,'rgba(30,58,138,0.78)');g1.addColorStop(0.35,'rgba(37,99,235,0.55)');g1.addColorStop(0.7,'rgba(59,130,246,0.35)');g1.addColorStop(1,'rgba(147,197,253,0.15)');
+  x.fillStyle=g1;x.beginPath();x.moveTo(0,h*0.42);
+  x.bezierCurveTo(w*0.12,h*0.12,w*0.28,h*0.6,w*0.45,h*0.28);
+  x.bezierCurveTo(w*0.6,h*0.02,w*0.8,h*0.52,w,h*0.32);
   x.lineTo(w,h);x.lineTo(0,h);x.closePath();x.fill();
   var g2=x.createLinearGradient(0,0,w,0);
-  g2.addColorStop(0,'rgba(20,83,45,0.32)');g2.addColorStop(1,'rgba(74,222,128,0.12)');
-  x.fillStyle=g2;x.beginPath();x.moveTo(0,h*0.62);
-  x.bezierCurveTo(w*0.15,h*0.38,w*0.35,h*0.7,w*0.55,h*0.42);
-  x.bezierCurveTo(w*0.72,h*0.2,w*0.88,h*0.52,w,h*0.48);
+  g2.addColorStop(0,'rgba(30,64,175,0.35)');g2.addColorStop(1,'rgba(96,165,250,0.12)');
+  x.fillStyle=g2;x.beginPath();x.moveTo(0,h*0.6);
+  x.bezierCurveTo(w*0.18,h*0.35,w*0.38,h*0.72,w*0.58,h*0.4);
+  x.bezierCurveTo(w*0.75,h*0.18,w*0.9,h*0.55,w,h*0.48);
   x.lineTo(w,h);x.lineTo(0,h);x.closePath();x.fill();
+  // Glow line
+  x.strokeStyle='rgba(147,197,253,0.3)';x.lineWidth=1;x.shadowColor='rgba(59,130,246,0.4)';x.shadowBlur=6;
+  x.beginPath();x.moveTo(0,h*0.42);
+  x.bezierCurveTo(w*0.12,h*0.12,w*0.28,h*0.6,w*0.45,h*0.28);
+  x.bezierCurveTo(w*0.6,h*0.02,w*0.8,h*0.52,w,h*0.32);x.stroke();
+  x.shadowBlur=0;
   return c.toDataURL('image/png');
 }
+
 function genMap(w,h){
   var c=document.createElement('canvas');c.width=w*2;c.height=h*2;
-  var x=c.getContext('2d');x.scale(2,2);x.fillStyle='#166534';
+  var x=c.getContext('2d');x.scale(2,2);x.fillStyle='#1e3a8a';
   var cx=w/2;x.beginPath();x.moveTo(cx-4,3);
   x.quadraticCurveTo(cx,0,cx+4,3);x.quadraticCurveTo(cx+10,8,cx+16,18);
   x.quadraticCurveTo(cx+24,30,cx+32,42);x.quadraticCurveTo(cx+38,52,cx+35,62);
@@ -423,7 +505,9 @@ function genMap(w,h){
   x.quadraticCurveTo(cx-10,8,cx-4,3);x.closePath();x.fill();
   return c.toDataURL('image/png');
 }
+
 function initDecos(){
+  document.getElementById('guilBg').src=genGuillocheBg(620,877);
   document.getElementById('wvTop').src=genWaveTop(620,60);
   document.getElementById('wvBot').src=genWaveBot(620,50);
   document.getElementById('mapBg').src=genMap(110,210);
@@ -473,7 +557,6 @@ function genCV(){
   var nm=v('f1'),nrc=v('f2'),dob=v('f3'),fa=v('f4'),mo=v('f5'),et=v('f6'),rl=v('f7'),
     mr=v('f8'),gd=v('f9'),ed=v('f10'),wk=v('f11'),ht=v('f12'),sl=v('f13'),
     ps=v('f14'),ru=v('f15'),ad=v('f16'),ph=v('f17'),sk=v('f18');
-
   if(!nm){alert('အမည် ထည့်သွင်းပါ');return}
   if(!nrc){alert('မှတ်ပုံတင် ထည့်သွင်းပါ');return}
   if(!ps){alert('ရာထူး ထည့်သွင်းပါ');return}
@@ -481,13 +564,12 @@ function genCV(){
   if(!processedPhoto){alert('ဓာတ်ပုံ Upload တင်ပါ');return}
 
   initDecos();
-
   document.getElementById('cvNm').textContent=nm;
   document.getElementById('cvPos').textContent=ps;
   document.getElementById('cvPh').textContent=ph;
   document.getElementById('cvAd').textContent=ad||'-';
   document.getElementById('cvSl').textContent=sl||'-';
-  document.getElementById('cvNrc').textContent=nrc||'-';
+  document.getElementById('cvNrc').textContent=nrc;
   document.getElementById('cvDob').textContent=dob||'-';
   document.getElementById('cvGd').textContent=gd||'-';
   document.getElementById('cvFa').textContent=fa||'-';
@@ -499,7 +581,7 @@ function genCV(){
   document.getElementById('cvEd').textContent=ed||'-';
   document.getElementById('cvWk').textContent=wk||'-';
   document.getElementById('cvSk').textContent=sk||'-';
-  document.getElementById('cvPD').textContent=ps||'-';
+  document.getElementById('cvPD').textContent=ps;
   document.getElementById('cvRu').textContent=ru||'-';
   document.getElementById('cvPhoto').src=processedPhoto;
   document.getElementById('cvSg').src=sc.toDataURL('image/png');
@@ -524,9 +606,9 @@ function dlCV(){
         logging:false,imageTimeout:15000,
         onclone:function(doc){
           var t=doc.getElementById('cvTpl');
-          t.style.transform='none';t.style.boxShadow='none';t.style.borderRadius='0';
+          t.style.transform='none';t.style.boxShadow='none';
           var ph=doc.getElementById('cvPhoto');
-          if(ph){ph.style.width='88px';ph.style.height='112px';ph.style.objectFit='cover';ph.style.display='block'}
+          if(ph){ph.style.width='92px';ph.style.height='118px';ph.style.objectFit='cover';ph.style.display='block'}
         }
       }).then(function(canvas){
         ov.style.display='none';
@@ -538,7 +620,7 @@ function dlCV(){
           setTimeout(function(){URL.revokeObjectURL(url)},8000);
         },'image/png');
       }).catch(function(e){ov.style.display='none';console.error(e);alert('Download မအောင်မြင်ပါ')});
-    },600);
+    },800);
   });
 }
 
